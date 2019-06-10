@@ -12,10 +12,10 @@ public class Album {
     private ObservableList<Musica> musicas;
     private Autor autor;
 
-    public Album(String nome, int anoLancamento, int numeroMusicas, ArrayList<Musica> musicas, Autor autor){
+    public Album(String nome, int anoLancamento, ArrayList<Musica> musicas, Autor autor){
         this.nome = nome;
         this.anoLancamento = anoLancamento;
-        this.numeroMusicas = numeroMusicas;
+        this.numeroMusicas = musicas.size();
         this.musicas = FXCollections.observableArrayList(musicas);
         this.autor = autor;
     }
@@ -42,6 +42,10 @@ public class Album {
 
     public void adicionarMusica(Musica musica){
         this.musicas.add(musica);
+        setNumeroMusicas();
+    }
+    public void removerMusica(Musica musica){
+        this.musicas.remove(musica);
         setNumeroMusicas();
     }
 

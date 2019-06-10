@@ -1,16 +1,14 @@
 package GerenciadorDePalavras.Model;
 
-public class Item {
+public class Item implements Comparable<Item>{
     private String tipo;
     private Album album;
-    private int prateleira;
     private int posicao;
 
-    public Item(String tipo, Album album, int prateleira, int posicao){
+    public Item(String tipo, Album album){
         this.tipo = tipo;
         this.album = album;
-        this.prateleira = prateleira;
-        this.posicao = posicao;
+       // this.posicao = posicao;
     }
 
     public Album getAlbum() {
@@ -21,16 +19,36 @@ public class Item {
         return posicao;
     }
 
-    public int getPrateleira() {
-        return prateleira;
-    }
-
     public String getTipo() {
         return tipo;
     }
 
+
     @Override
-    public String toString() {
-        return this.tipo+" - "+album.getNome();
+    public int compareTo(Item item) {
+        if(this.album.getAutor().getNome().compareTo(item.album.getAutor().getNome()) == 0)
+        {
+            if(this.album.getNome().compareTo(item.album.getNome())>0){
+                return 1;
+            }else if(this.album.getNome().compareTo(item.album.getNome())<0){
+                return -1;
+            }else if(this.album.getNome().compareTo(item.album.getNome())==0){
+                if(this.album.getAnoLancamento() < item.album.getAnoLancamento()){
+                    return -1;
+                }else if(this.album.getAnoLancamento() > item.album.getAnoLancamento()){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }
+        }else if(this.album.getAutor().getNome().compareTo(item.album.getAutor().getNome()) < 0){
+            return -1;
+        }else{
+            return 1;
+        }
+        return 0;
     }
+
+//    A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
+
 }

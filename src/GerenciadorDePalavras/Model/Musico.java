@@ -6,7 +6,7 @@ public class Musico extends Autor{
         super(nome, cidadeOrigem, anoNascimento);
     }
 
-    private String tipo(){
+    public String tipo(){
         return "Musico";
     }
 }
