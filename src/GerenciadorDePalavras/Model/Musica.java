@@ -24,4 +24,24 @@ public class Musica {
     public double getDuracao() {
         return duracao;
     }
+
+    @Override
+    public String toString() {
+        String past;
+        past = "Musica: "+nome;
+        boolean entrou = false;
+        if(compositores.size()>1)
+            past += " Compositores: ";
+        else past += " Compositor: ";
+        for(String comp:compositores){
+            if(entrou)
+                past+= ", ";
+            past+= comp;
+            entrou = true;
+        }
+            past += " Duração: "+duracao;
+
+
+       return past;
+    }
 }

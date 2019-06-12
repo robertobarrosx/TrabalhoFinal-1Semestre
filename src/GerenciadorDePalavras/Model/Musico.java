@@ -9,4 +9,9 @@ public class Musico extends Autor{
     public String tipo(){
         return "Musico";
     }
+
+    @Override
+    public String toString() {
+        return "Cantor: "+getNome()+" Nascido: "+getCidadeOrigem()+" em "+getAnoNascimento();
+    }
 }

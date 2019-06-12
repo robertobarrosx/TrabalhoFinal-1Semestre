@@ -9,14 +9,14 @@ public class Album {
     private String nome;
     private int anoLancamento;
     private int numeroMusicas;
-    private ObservableList<Musica> musicas;
+    private ArrayList<Musica> musicas;
     private Autor autor;
 
     public Album(String nome, int anoLancamento, ArrayList<Musica> musicas, Autor autor){
         this.nome = nome;
         this.anoLancamento = anoLancamento;
         this.numeroMusicas = musicas.size();
-        this.musicas = FXCollections.observableArrayList(musicas);
+        this.musicas = musicas;
         this.autor = autor;
     }
 
@@ -36,7 +36,7 @@ public class Album {
         return numeroMusicas;
     }
 
-    public ObservableList<Musica> getMusicas() {
+    public ArrayList<Musica> getMusicas() {
         return musicas;
     }
 

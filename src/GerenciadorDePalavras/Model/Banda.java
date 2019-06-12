@@ -9,4 +9,9 @@ public class Banda extends Autor {
     private String tipo(){
         return "Banda";
     }
+
+    @Override
+    public String toString() {
+        return "Banda: "+getNome()+" Cidade Natal: "+getCidadeOrigem()+" em "+getAnoNascimento();
+    }
 }

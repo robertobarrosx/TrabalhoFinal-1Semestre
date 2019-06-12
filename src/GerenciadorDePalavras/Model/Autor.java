@@ -26,4 +26,9 @@ public class Autor {
     private String tipo(){
         return "Autor";
     }
+
+    @Override
+    public String toString() {
+        return "Autor: "+nome+" Nascido: "+cidadeOrigem+" em "+anoNascimento;
+    }
 }

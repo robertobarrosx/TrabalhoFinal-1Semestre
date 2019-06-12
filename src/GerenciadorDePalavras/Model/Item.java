@@ -23,6 +23,9 @@ public class Item implements Comparable<Item>{
         return tipo;
     }
 
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
+    }
 
     @Override
     public int compareTo(Item item) {
