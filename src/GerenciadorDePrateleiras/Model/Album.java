@@ -1,7 +1,4 @@
-package GerenciadorDePalavras.Model;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+package GerenciadorDePrateleiras.Model;
 
 import java.util.ArrayList;
 

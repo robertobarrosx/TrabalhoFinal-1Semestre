@@ -1,4 +1,4 @@
-package GerenciadorDePalavras.Model;
+package GerenciadorDePrateleiras.Model;
 
 import java.util.ArrayList;
 

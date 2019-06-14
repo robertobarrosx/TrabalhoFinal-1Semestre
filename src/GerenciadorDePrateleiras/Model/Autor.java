@@ -1,4 +1,4 @@
-package GerenciadorDePalavras.Model;
+package GerenciadorDePrateleiras.Model;
 
 public class Autor {
     private String nome;

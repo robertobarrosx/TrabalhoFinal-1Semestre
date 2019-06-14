@@ -1,8 +1,6 @@
-package GerenciadorDePalavras.Control;
+package GerenciadorDePrateleiras.Control;
 
-import GerenciadorDePalavras.Model.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import GerenciadorDePrateleiras.Model.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -122,14 +120,14 @@ public class Gerenciador implements Serializable {
 
         return albumsL;
     }
-    public ArrayList<Musica> buscarMusica(String nome){
+    public ArrayList<Musica> buscarMusica(String nome) {
         ArrayList<Musica> musicasL = new ArrayList<>();
         boolean entrou = false;
-        for(Prateleira p: this.prateleiras){
-            for(Item i: p.getListItems()){
-                for(Musica m: i.getAlbum().getMusicas()){
-                    for(String compositor:m.getCompositores()){
-                        if(compositor.toLowerCase().contains(nome.toLowerCase())||m.getNome().toLowerCase().contains(nome.toLowerCase())) {
+        for (Prateleira p : this.prateleiras) {
+            for (Item i : p.getListItems()) {
+                for (Musica m : i.getAlbum().getMusicas()) {
+                    for (String compositor : m.getCompositores()) {
+                        if (compositor.toLowerCase().contains(nome.toLowerCase()) || m.getNome().toLowerCase().contains(nome.toLowerCase())) {
                             musicasL.add(m);
                             entrou = true;
                         }
@@ -137,13 +135,12 @@ public class Gerenciador implements Serializable {
                 }
             }
         }
-        if(!entrou)
+        if (!entrou)
             return null;
 
         return musicasL;
-
     }
-    //    Manter (adicionar e remover) autor/banda: (Nome, Cidade de Origem, Ano de Nascimento)
+//    Manter (adicionar e remover) autor/banda: (Nome, Cidade de Origem, Ano de Nascimento)
 //    Manter (adicionar e remover) de álbum: (Nome, Ano de Lançamento, Número de Músicas, Músicas, Autor/Banda)
 //    Manter (adicionar e remover) de música: (Nome, Compositores, Duração)
 //    Manter (adicionar,remover e atualizar) item: (Tipo (CD, k7, Vinil), Álbum, Posição nas Prateleiras)
@@ -153,7 +150,7 @@ public class Gerenciador implements Serializable {
 //    Deve ser possível salvar e recuperar os dados de arquivo binário
 //    Deve ser possível importar um conjunto inicial de dados a partir de um arquivo txt. O formato deve ser definido por você.
 
-//    Chico possui 10 lugars que acomodam 100 vinis cada, 10 lugars que acomodam 200 cds cada e 10 lugars que acomodam 150 k7s cada.
+//    Chico possui 10 prateleira que acomodam 100 vinis cada, 10 prateleira que acomodam 200 cds cada e 10 prateleira que acomodam 150 k7s cada.
 //    A posição de cada item deve ser calculada automaticamente, indicando o número da prateleira (1..10) e também
 //    a posição dentro da prateleira (1..n). A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
 
