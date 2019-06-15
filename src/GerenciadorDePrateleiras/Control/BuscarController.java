@@ -148,8 +148,8 @@ public class BuscarController {
                         musicList.add(new MusicTb(msc.getNome(), msc.getCompositores(), al.getNome(), msc.getDuracao()));
                 }
             }
-            for (MusicTb a : musicList)
-                System.out.println(a.getNome());
+            /*for (MusicTb a : musicList)
+                System.out.println(a.getNome());*/
             tb_musica.setItems(listaDeMusicas(musicList));
         }else if(rb_autor.isSelected()){
             autorList.clear();
