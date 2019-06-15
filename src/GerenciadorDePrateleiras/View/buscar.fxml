@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="927.0" prefWidth="1477.0" stylesheets="@../Resources/img/dark.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GerenciadorDePrateleiras.Control.BuscarController">
+
+        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1427.0" spacing="10.0" style="-fx-background-color: #374754;">
+                <ImageView fitHeight="61.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../Resources/img/icons8-estante-de-livros-100.png" />
+                </ImageView>
+                <Label style="-fx-font-size: 30;" text="GRIP - Gestor de Repositorio e Items em Prateleiras" />
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+        <HBox prefHeight="947.0" prefWidth="1631.0">
+                <VBox prefHeight="851.0" prefWidth="433.0" spacing="1.0" style="-fx-background-color: #374754;">
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Items" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Albums" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Autores" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Musicas" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda" />
+                    <padding>
+                        <Insets left="10.0" right="10.0" top="60.0" />
+                    </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+                </VBox>
+                <GridPane alignment="CENTER" prefHeight="847.0" prefWidth="1344.0" style="-fx-border-color: black;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="179.0" minHeight="0.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="503.0" minHeight="10.0" prefHeight="463.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="73.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="481.0" spacing="10.0" GridPane.rowIndex="1">
+                                <RadioButton mnemonicParsing="false" selected="true" style="-fx-font-size: 18;" text="Musica" fx:id="rb_musica" onAction="#mudarInterface" >
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="tipoBusca" />
+                                    </toggleGroup></RadioButton>
+                                <RadioButton mnemonicParsing="false" style="-fx-font-size: 18;" text="Autor" toggleGroup="$tipoBusca" fx:id="rb_autor" onAction="#mudarInterface" />
+                                <RadioButton mnemonicParsing="false" style="-fx-font-size: 18;" text="Album" toggleGroup="$tipoBusca" fx:id="rb_album" onAction="#mudarInterface" />
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </GridPane.margin>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </HBox>
+                        <TextField fx:id="tf_string" onAction="#buscar" onKeyPressed="#buscar" onKeyTyped="#buscar" promptText="Digite o nome da musica ou o nome de um dos compositores" style="-fx-font-size: 18;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <HBox fx:id="hb_musica" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                                <TableView fx:id="tb_musica" blendMode="HARD_LIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="591.0" prefWidth="1258.0" style="-fx-alignment: center;">
+                                    <columns>
+                                        <TableColumn prefWidth="129.0" />
+                                        <TableColumn fx:id="tb_musicaColNome" prefWidth="156.33331298828125" style="-fx-alignment: center;" text="Nome" />
+                                        <TableColumn fx:id="tb_musicaColCompositores" prefWidth="421.6666259765625" style="-fx-alignment: center;" text="Compositor(es)" />
+                                        <TableColumn fx:id="tb_musicaColDuracao" prefWidth="147.3333740234375" style="-fx-alignment: center;" text="Duração" />
+                                        <TableColumn fx:id="tb_musicaColNomeAlbum" prefWidth="255.0" style="-fx-alignment: center;" text="Nome do Album" />
+                                    </columns>
+                                    <HBox.margin>
+                                        <Insets left="10.0" right="10.0" />
+                                    </HBox.margin>
+                           <effect>
+                              <Glow />
+                           </effect>
+                                </TableView>
+                        </HBox>
+                        <HBox fx:id="hb_autor" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                                <TableView fx:id="tb_autor" blendMode="HARD_LIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="591.0" prefWidth="1258.0" style="-fx-alignment: center;">
+                                    <columns>
+                                        <TableColumn prefWidth="129.0" />
+                                        <TableColumn fx:id="tb_autorColTipo" prefWidth="156.33331298828125" style="-fx-alignment: center;" text="Tipo" />
+                                        <TableColumn fx:id="tb_autorColNome" prefWidth="296.0" style="-fx-alignment: center;" text="Nome" />
+                                        <TableColumn fx:id="tb_autorColCidade" prefWidth="274.0" style="-fx-alignment: center;" text="Cidade de Origem" />
+                                        <TableColumn fx:id="tb_autorColAno" prefWidth="255.0" style="-fx-alignment: center;" text="Ano de Nascimento" />
+                                    </columns>
+                                    <HBox.margin>
+                                        <Insets left="10.0" right="10.0" />
+                                    </HBox.margin>
+                                    <effect>
+                                        <Glow />
+                                    </effect>
+                                </TableView>
+                        </HBox>
+                        <HBox fx:id="hb_album" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                                <TableView fx:id="tb_album" blendMode="HARD_LIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="591.0" prefWidth="1258.0" style="-fx-alignment: center;">
+                                    <columns>
+                                        <TableColumn prefWidth="129.0" />
+                                        <TableColumn fx:id="tb_albumColNome" prefWidth="156.33331298828125" style="-fx-alignment: center;" text="Nome" />
+                                        <TableColumn fx:id="cl_AutorNome" prefWidth="296.0" style="-fx-alignment: center;" text="Autor" />
+                                        <TableColumn fx:id="tb_albumColAno" prefWidth="274.0" style="-fx-alignment: center;" text="Ano de Lançamento" />
+                                        <TableColumn fx:id="tb_albumColQtdMusicas" prefWidth="255.0" style="-fx-alignment: center;" text="Quantidade de Musicas" />
+                                    </columns>
+                                    <HBox.margin>
+                                        <Insets left="10.0" right="10.0" />
+                                    </HBox.margin>
+                                    <effect>
+                                        <Glow />
+                                    </effect>
+                                </TableView>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2">
+                                <ImageView fitHeight="67.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../Resources/img/icons8-pesquisar-100.png" />
+                                </ImageView>
+                                <Label style="-fx-font-size: 30; -fx-text-fill: black;" text="Buscar" />
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </GridPane.margin>
+                        </HBox>
+                        <HBox fx:id="hb_albumB" visible="false" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets right="20.0" />
+                            </padding>
+                                <Button mnemonicParsing="false" style="-fx-font-size: 15;" text="Listar Musicas" onAction="#listarMusicas"/>
+                        </HBox>
+                        <HBox fx:id="hb_autorB" visible="false" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets right="20.0" />
+                            </padding>
+                                <Button mnemonicParsing="false" style="-fx-font-size: 15;" text="Listar Albums" onAction="#listarAlbums"/>
+                        </HBox>
+                </GridPane>
+        </HBox>
+</VBox>

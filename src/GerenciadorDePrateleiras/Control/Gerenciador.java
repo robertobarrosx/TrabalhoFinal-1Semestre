@@ -8,13 +8,25 @@ import java.util.ArrayList;
 public class Gerenciador implements Serializable {
     private ArrayList<Prateleira> prateleiras;
 
+    private Gerenciador(){
+        prateleiras = new ArrayList<>();
+        criarprateleiras();
+    }
+    private static Gerenciador instance;
+    public static Gerenciador getInstance(){
+        if(instance == null){
+            instance = new Gerenciador();
+        }
+        return instance;
+    }
+
     public void adicionarPrateleira(Prateleira prateleira){
         this.prateleiras.add(prateleira);
     }
     public void removerPrateleira(Prateleira prateleira){
         this.prateleiras.remove(prateleira);
     }
-    public void criarprateleiras(){
+    private void criarprateleiras(){
         prateleiras = new ArrayList<>();
         for(int i =0;i<10;i++) {
             Prateleira prateleira = new Prateleira("CD", 2);
@@ -83,11 +95,17 @@ public class Gerenciador implements Serializable {
         return true;
     }
     public void removerItem(Item i){
-        this.prateleiras.remove(i);
+        for(Prateleira p:prateleiras){
+            if(p.getListItems().contains(i)){
+                p.removerItem(i);
+            }
+        }
     }
     public ArrayList<Prateleira> getPrateleiras() {
         return prateleiras;
     }
+
+
     public ArrayList<Autor> buscarAutor(String autor){
         ArrayList<Autor> autoresL = new ArrayList<>();
         boolean entrou = false;
@@ -104,6 +122,7 @@ public class Gerenciador implements Serializable {
 
         return autoresL;
     }
+
     public ArrayList<Album> buscatAlbum (String nome){
         ArrayList<Album> albumsL = new ArrayList<>();
         boolean entrou = false;
@@ -120,6 +139,21 @@ public class Gerenciador implements Serializable {
 
         return albumsL;
     }
+    public ArrayList<Album> buscarAlbum (){
+        ArrayList<Album> albumsL = new ArrayList<>();
+        boolean entrou = false;
+        for(Prateleira p: this.prateleiras){
+            for(Item i: p.getListItems()){
+                     albumsL.add(i.getAlbum());
+                     entrou = true;
+            }
+        }
+        if(!entrou)
+            return null;
+        return albumsL;
+    }
+
+
     public ArrayList<Musica> buscarMusica(String nome) {
         ArrayList<Musica> musicasL = new ArrayList<>();
         boolean entrou = false;

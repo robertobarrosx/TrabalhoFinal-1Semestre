@@ -5,9 +5,9 @@ import GerenciadorDePrateleiras.Model.Prateleira;
 
 public class Main {
     public static void main(String[] args) {
-        Gerenciador l = new Gerenciador();
-        l.criarprateleiras();
-        for(Prateleira a:l.getPrateleiras()){//
+       // Gerenciador l = new Gerenciador();
+       // l.criarprateleiras();
+        for(Prateleira a:Gerenciador.getInstance().getPrateleiras()){//
             System.out.println("Prateleira de "+a.getTipoItem()+ " N "+a.getNumero());
             a.imprimirLista();
         }
