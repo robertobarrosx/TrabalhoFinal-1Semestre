@@ -123,7 +123,7 @@ public class Gerenciador implements Serializable {
         return autoresL;
     }
 
-    public ArrayList<Album> buscatAlbum (String nome){
+    public ArrayList<Album> buscarAlbum (String nome){
         ArrayList<Album> albumsL = new ArrayList<>();
         boolean entrou = false;
         for(Prateleira p: this.prateleiras){

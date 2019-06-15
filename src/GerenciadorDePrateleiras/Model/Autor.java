@@ -23,7 +23,7 @@ public class Autor {
         return cidadeOrigem;
     }
 
-    private String tipo(){
+    public String tipo(){
         return "Autor";
     }
 

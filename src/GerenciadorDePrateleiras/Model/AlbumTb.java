@@ -16,4 +16,20 @@ public class AlbumTb {
         this.numeroMusicas = new SimpleIntegerProperty(numeroMusicas);
         this.autor = new SimpleStringProperty(autor);
     }
+
+    public String getNome() {
+        return nome.get();
+    }
+
+    public int getAnoLancamento() {
+        return anoLancamento.get();
+    }
+
+    public int getNumeroMusicas() {
+        return numeroMusicas.get();
+    }
+
+    public String getAutor() {
+        return autor.get();
+    }
 }

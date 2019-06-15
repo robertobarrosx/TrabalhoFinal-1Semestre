@@ -14,49 +14,61 @@ public class BuscarController {
 
 
     @FXML
-    TextField tf_string;
+    private TextField tf_string;
 
     @FXML
-    HBox hb_musica,hb_autor,hb_album,hb_autorB,hb_albumB;
+    private HBox hb_musica,hb_autor,hb_album,hb_autorB,hb_albumB;
 
     @FXML
-    TableColumn<MusicTb,String> tb_musicaColNome, tb_musicaColNomeAlbum, tb_musicaColCompositores;
+    private TableColumn<MusicTb,String> tb_musicaColNome, tb_musicaColNomeAlbum, tb_musicaColCompositores;
     @FXML
-    TableColumn<MusicTb, ?> tb_musicaColDuracao;
+    private TableColumn<MusicTb, ?> tb_musicaColDuracao;
 
     @FXML
-    TableColumn<AutorTb,String> tb_autorColTipo, tb_autorColNome, tb_autorColCidade;
+    private TableColumn<AutorTb,String> tb_autorColTipo, tb_autorColNome, tb_autorColCidade;
     @FXML
-    TableColumn<AutorTb,Integer> tb_autorColAno;
+    private TableColumn<AutorTb,Integer> tb_autorColAno;
     @FXML
-    TableColumn<AlbumTb,String> tb_albumColNome,cl_AutorNome;
+    private TableColumn<AlbumTb,String> tb_albumColNome, tb_albumColAutor;
     @FXML
-    TableColumn<AlbumTb,Integer> tb_albumColAno, tb_albumColQtdMusicas;
+    private TableColumn<AlbumTb,Integer> tb_albumColAno, tb_albumColQtdMusicas;
 
     @FXML
-    TableView<AlbumTb> tb_album;
+    private TableView<AlbumTb> tb_album;
     @FXML
-    RadioButton rb_musica,rb_autor,rb_album;
+    private RadioButton rb_musica,rb_autor,rb_album;
 
     @FXML
-    TableView<MusicTb> tb_musica;//,tb_album,tb_autor;
+    private TableView<MusicTb> tb_musica;//,tb_album,tb_autor;
     @FXML
-    TableView<AutorTb> tb_autor;
+    private TableView<AutorTb> tb_autor;
 
     @FXML
-    ToggleGroup tipoBusca;
+    private ToggleGroup tipoBusca;
 
     private ObservableList<Autor> autores;
     private ObservableList<Musica> musicas;
     private ObservableList<Album> albums;
-    private ArrayList<MusicTb> list;
-    private ObservableList<MusicTb> listaDeClientes(List<MusicTb> lista) {
+    private ArrayList<MusicTb> musicList;
+    private ArrayList<AlbumTb> albumList;
+    private ArrayList<AutorTb> autorList;
+    private ObservableList<MusicTb> listaDeMusicas(List<MusicTb> lista) {
+
+        return FXCollections.observableArrayList( lista);
+    }
+    private ObservableList<AutorTb> listaDeAutor(List<AutorTb> lista) {
+
+        return FXCollections.observableArrayList( lista);
+    }
+    private ObservableList<AlbumTb> listaDeAlbums(List<AlbumTb> lista) {
 
         return FXCollections.observableArrayList( lista);
     }
     @FXML
     public void initialize(){
-        list = new ArrayList<>();
+        musicList = new ArrayList<>();
+        albumList = new ArrayList<>();
+        autorList = new ArrayList<>();
         autores = FXCollections.observableArrayList();
         musicas = FXCollections.observableArrayList();
         albums = FXCollections.observableArrayList();
@@ -68,7 +80,27 @@ public class BuscarController {
                 new PropertyValueFactory<>("album"));
         tb_musicaColCompositores.setCellValueFactory(
                 new PropertyValueFactory<>("compositores"));
-        tb_musica.setItems(listaDeClientes(list));
+        tb_musica.setItems(listaDeMusicas(musicList));
+
+        tb_albumColNome.setCellValueFactory(
+                new PropertyValueFactory<>("nome"));
+        tb_albumColAno.setCellValueFactory(
+                new PropertyValueFactory<>("anoLancamento"));
+        tb_albumColQtdMusicas.setCellValueFactory(
+                new PropertyValueFactory<>("numeroMusicas"));
+        tb_albumColAutor.setCellValueFactory(
+                new PropertyValueFactory<>("autor"));
+        tb_album.setItems(listaDeAlbums(albumList));
+
+        tb_autorColNome.setCellValueFactory(
+                new PropertyValueFactory<>("nome"));
+        tb_autorColCidade.setCellValueFactory(
+                new PropertyValueFactory<>("cidadeOrigem"));
+        tb_autorColTipo.setCellValueFactory(
+                new PropertyValueFactory<>("tipo"));
+        tb_autorColAno.setCellValueFactory(
+                new PropertyValueFactory<>("anoNascimento"));
+        tb_album.setItems(listaDeAlbums(albumList));
     }
 
     @FXML
@@ -103,21 +135,38 @@ public class BuscarController {
     }
     @FXML
     private void buscar(){
-        ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum();
-        list.clear();
-        for(Album al: albums){
-            for(Musica msc:al.getMusicas()){
-                String comp = "";
-                for(String st:msc.getCompositores()){
-                    comp += st;
+        if(rb_musica.isSelected()) {
+            ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum();
+            musicList.clear();
+            for (Album al : albums) {
+                for (Musica msc : al.getMusicas()) {
+                    String comp = "";
+                    for (String st : msc.getCompositores()) {
+                        comp += st;
+                    }
+                    if (msc.getNome().toLowerCase().contains(tf_string.getText().toLowerCase()) || comp.toLowerCase().contains(tf_string.getText().toLowerCase()))
+                        musicList.add(new MusicTb(msc.getNome(), msc.getCompositores(), al.getNome(), msc.getDuracao()));
                 }
-                if(msc.getNome().toLowerCase().contains(tf_string.getText().toLowerCase()) || comp.toLowerCase().contains(tf_string.getText().toLowerCase()))
-                    list.add(new MusicTb(msc.getNome(),msc.getCompositores(),al.getNome(),msc.getDuracao()));
             }
+            for (MusicTb a : musicList)
+                System.out.println(a.getNome());
+            tb_musica.setItems(listaDeMusicas(musicList));
+        }else if(rb_autor.isSelected()){
+            autorList.clear();
+            ArrayList<Autor> autores = Gerenciador.getInstance().buscarAutor(tf_string.getText());
+            if(autores != null)
+            for(Autor a:autores){
+                autorList.add(new AutorTb(a.getNome(),a.tipo(),a.getCidadeOrigem(),a.getAnoNascimento()));
+            }
+            tb_autor.setItems(listaDeAutor(autorList));
+        }else{
+            albumList.clear();
+            ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum(tf_string.getText());
+            if(albums !=null)
+            for(Album a:albums){
+                albumList.add(new AlbumTb(a.getNome(),a.getAnoLancamento(),a.getNumeroMusicas(),a.getAutor().getNome()));
+            }
+            tb_album.setItems(listaDeAlbums(albumList));
         }
-        for(MusicTb a:list)
-            System.out.println(a.getNome());
-        tb_musica.setItems(listaDeClientes(list));
-
     }
 }

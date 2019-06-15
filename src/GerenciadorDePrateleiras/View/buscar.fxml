@@ -145,7 +145,7 @@
                                     <columns>
                                         <TableColumn prefWidth="129.0" />
                                         <TableColumn fx:id="tb_albumColNome" prefWidth="156.33331298828125" style="-fx-alignment: center;" text="Nome" />
-                                        <TableColumn fx:id="cl_AutorNome" prefWidth="296.0" style="-fx-alignment: center;" text="Autor" />
+                                        <TableColumn fx:id="tb_albumColAutor" prefWidth="296.0" style="-fx-alignment: center;" text="Autor" />
                                         <TableColumn fx:id="tb_albumColAno" prefWidth="274.0" style="-fx-alignment: center;" text="Ano de Lançamento" />
                                         <TableColumn fx:id="tb_albumColQtdMusicas" prefWidth="255.0" style="-fx-alignment: center;" text="Quantidade de Musicas" />
                                     </columns>
