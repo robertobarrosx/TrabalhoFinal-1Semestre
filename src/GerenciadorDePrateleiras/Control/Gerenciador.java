@@ -112,8 +112,10 @@ public class Gerenciador implements Serializable {
         for(Prateleira p: this.prateleiras){
             for(Item i: p.getListItems()){
                 if(i.getAlbum().getAutor().getNome().toLowerCase().contains(autor.toLowerCase())){
-                    autoresL.add(i.getAlbum().getAutor());
-                    entrou = true;
+                    if(!autoresL.contains(i.getAlbum().getAutor())) {
+                        autoresL.add(i.getAlbum().getAutor());
+                        entrou = true;
+                    }
                 }
             }
         }

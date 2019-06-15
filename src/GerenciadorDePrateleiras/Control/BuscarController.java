@@ -25,11 +25,11 @@ public class BuscarController {
     private TableColumn<MusicTb, ?> tb_musicaColDuracao;
 
     @FXML
-    private TableColumn<AutorTb,String> tb_autorColTipo, tb_autorColNome, tb_autorColCidade;
+    private TableColumn<AutorTb,String> tb_autorColTipo, tb_autorColNome, tb_autorColCidade,tb_autorColAlbum;
     @FXML
     private TableColumn<AutorTb,Integer> tb_autorColAno;
     @FXML
-    private TableColumn<AlbumTb,String> tb_albumColNome, tb_albumColAutor;
+    private TableColumn<AlbumTb,String> tb_albumColNome, tb_albumColAutor,tb_albumColMusicas;
     @FXML
     private TableColumn<AlbumTb,Integer> tb_albumColAno, tb_albumColQtdMusicas;
 
@@ -90,7 +90,10 @@ public class BuscarController {
                 new PropertyValueFactory<>("numeroMusicas"));
         tb_albumColAutor.setCellValueFactory(
                 new PropertyValueFactory<>("autor"));
+        tb_albumColMusicas.setCellValueFactory(
+                new PropertyValueFactory<>("musicas"));
         tb_album.setItems(listaDeAlbums(albumList));
+
 
         tb_autorColNome.setCellValueFactory(
                 new PropertyValueFactory<>("nome"));
@@ -100,6 +103,8 @@ public class BuscarController {
                 new PropertyValueFactory<>("tipo"));
         tb_autorColAno.setCellValueFactory(
                 new PropertyValueFactory<>("anoNascimento"));
+        tb_autorColAlbum.setCellValueFactory(
+                new PropertyValueFactory<>("albums"));
         tb_album.setItems(listaDeAlbums(albumList));
     }
 
@@ -156,15 +161,22 @@ public class BuscarController {
             ArrayList<Autor> autores = Gerenciador.getInstance().buscarAutor(tf_string.getText());
             if(autores != null)
             for(Autor a:autores){
-                autorList.add(new AutorTb(a.getNome(),a.tipo(),a.getCidadeOrigem(),a.getAnoNascimento()));
+                ArrayList<String> pa = new ArrayList<>();
+                for(Album albs:Gerenciador.getInstance().buscarAlbum()){
+                    if(albs.getAutor().equals(a))
+                        pa.add(albs.getNome());
+                }
+
+                autorList.add(new AutorTb(a.getNome(),a.tipo(),a.getCidadeOrigem(),a.getAnoNascimento(),pa));
             }
             tb_autor.setItems(listaDeAutor(autorList));
         }else{
             albumList.clear();
             ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum(tf_string.getText());
+            int number = 0;
             if(albums !=null)
             for(Album a:albums){
-                albumList.add(new AlbumTb(a.getNome(),a.getAnoLancamento(),a.getNumeroMusicas(),a.getAutor().getNome()));
+                albumList.add(new AlbumTb(a.getNome(),a.getAnoLancamento(),a.getNumeroMusicas(),a.getAutor().getNome(), a.getMusicas()));
             }
             tb_album.setItems(listaDeAlbums(albumList));
         }
