@@ -113,19 +113,22 @@ public class BuscarController {
         hb_autor.setVisible(false);
         hb_musica.setVisible(false);
         hb_album.setVisible(false);
-        hb_albumB.setVisible(false);
-        hb_autorB.setVisible(false);
+        tf_string.clear();
         if(rb_musica.isSelected()) {
+            musicList.clear();
+            tb_musica.setItems(listaDeMusicas(musicList));
             hb_musica.setVisible(true);
             tf_string.setPromptText("Digite o nome da musica ou o nome de um dos compositores");
         }
         else if(rb_autor.isSelected()) {
+            autorList.clear();
+            tb_autor.setItems(listaDeAutor(autorList));
             hb_autor.setVisible(true);
-            hb_autorB.setVisible(true);
             tf_string.setPromptText("Digite o nome do cantor ou o nome da banda");
         }else{
+            albumList.clear();
+            tb_album.setItems(listaDeAlbums(albumList));
             hb_album.setVisible(true);
-            hb_albumB.setVisible(true);
             tf_string.setPromptText("Digite o nome do album ou o nome do autor");
         }
     }

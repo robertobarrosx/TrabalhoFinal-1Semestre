@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="927.0" prefWidth="1477.0" stylesheets="@../Resources/img/dark.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GerenciadorDePrateleiras.Control.BuscarController">
+<VBox prefHeight="927.0" prefWidth="1477.0" stylesheets="@../Resources/img/dark.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GerenciadorDePrateleiras.Control.BuscarController">
 
         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1427.0" spacing="10.0" style="-fx-background-color: #374754;">
                 <ImageView fitHeight="61.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
@@ -45,25 +45,39 @@
                 </VBox>
                 <GridPane alignment="CENTER" prefHeight="847.0" prefWidth="1344.0" style="-fx-border-color: black;">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="755.0" minWidth="10.0" prefWidth="608.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="584.0" minWidth="10.0" prefWidth="584.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="179.0" minHeight="0.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="503.0" minHeight="10.0" prefHeight="463.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="134.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="73.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
                     </rowConstraints>
 
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="481.0" spacing="10.0" GridPane.rowIndex="1">
-                                <RadioButton mnemonicParsing="false" selected="true" style="-fx-font-size: 18;" text="Musica" fx:id="rb_musica" onAction="#mudarInterface" >
+            <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/img/icons8-gravar-música-64.png" />
+               </image>
+            </ImageView>
+                                <RadioButton fx:id="rb_musica" mnemonicParsing="false" onAction="#mudarInterface" selected="true" style="-fx-font-size: 18;" text="Musica">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="tipoBusca" />
                                     </toggleGroup></RadioButton>
-                                <RadioButton mnemonicParsing="false" style="-fx-font-size: 18;" text="Autor" toggleGroup="$tipoBusca" fx:id="rb_autor" onAction="#mudarInterface" />
-                                <RadioButton mnemonicParsing="false" style="-fx-font-size: 18;" text="Album" toggleGroup="$tipoBusca" fx:id="rb_album" onAction="#mudarInterface" />
+            <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/img/icons8-usuário-batendo-à-máquina-de-escrever-100.png" />
+               </image>
+            </ImageView>
+                                <RadioButton fx:id="rb_autor" mnemonicParsing="false" onAction="#mudarInterface" style="-fx-font-size: 18;" text="Autor" toggleGroup="$tipoBusca" />
+            <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/img/icons8-biblioteca-de-música-filled-100.png" />
+               </image>
+            </ImageView>
+                                <RadioButton fx:id="rb_album" mnemonicParsing="false" onAction="#mudarInterface" style="-fx-font-size: 18;" text="Album" toggleGroup="$tipoBusca" />
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -79,7 +93,7 @@
                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                             </GridPane.margin>
                         </TextField>
-                        <HBox fx:id="hb_musica" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                        <HBox fx:id="hb_musica" prefHeight="660.0" prefWidth="1192.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -105,7 +119,7 @@
                            </effect>
                                 </TableView>
                         </HBox>
-                        <HBox fx:id="hb_autor" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                        <HBox fx:id="hb_autor" prefHeight="100.0" prefWidth="200.0" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -132,7 +146,7 @@
                                     </effect>
                                 </TableView>
                         </HBox>
-                        <HBox fx:id="hb_album" visible="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                        <HBox fx:id="hb_album" prefHeight="100.0" prefWidth="200.0" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -160,37 +174,19 @@
                                 </TableView>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2">
-                                <ImageView fitHeight="67.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                         <Image url="@../Resources/img/icons8-pesquisar-100.png" />
                                 </ImageView>
-                                <Label style="-fx-font-size: 30; -fx-text-fill: black;" text="Buscar" />
+                                <Label style="-fx-font-size: 40; -fx-text-fill: black;" text="Buscar" />
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                <Insets left="10.0" right="10.0" />
                             </padding>
                      <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
-                        </HBox>
-                        <HBox fx:id="hb_albumB" visible="false" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <padding>
-                                <Insets right="20.0" />
-                            </padding>
-<!--                                <Button mnemonicParsing="false" style="-fx-font-size: 15;" text="Listar Musicas" onAction="#listarMusicas"/>-->
-                        </HBox>
-                        <HBox fx:id="hb_autorB" visible="false" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <padding>
-                                <Insets right="20.0" />
-                            </padding>
-<!--                                <Button mnemonicParsing="false" style="-fx-font-size: 15;" text="Listar Albums" onAction="#listarAlbums"/>-->
                         </HBox>
                 </GridPane>
         </HBox>
