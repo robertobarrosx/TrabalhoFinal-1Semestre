@@ -1,6 +1,8 @@
 package GerenciadorDePrateleiras.Model;
 
-public class Autor {
+import java.io.Serializable;
+
+public class Autor implements Serializable {
     private String nome;
     private String cidadeOrigem;
     private int anoNascimento;

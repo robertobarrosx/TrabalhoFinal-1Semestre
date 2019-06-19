@@ -1,5 +1,6 @@
 package GerenciadorDePrateleiras.Control;
 
+import GerenciadorDePrateleiras.GerenciadorJanelas;
 import GerenciadorDePrateleiras.Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ public class BuscarController {
     @FXML
     private TableColumn<AlbumTb,String> tb_albumColNome, tb_albumColAutor,tb_albumColMusicas;
     @FXML
-    private TableColumn<AlbumTb,Integer> tb_albumColAno, tb_albumColQtdMusicas;
+    private TableColumn<AlbumTb,Integer> tb_albumColAno, tb_albumColQtdMusicas,tb_albumColTipo,tb_albumColPrateleira,tb_albumColPosicao;
 
     @FXML
     private TableView<AlbumTb> tb_album;
@@ -82,6 +83,8 @@ public class BuscarController {
                 new PropertyValueFactory<>("compositores"));
         tb_musica.setItems(listaDeMusicas(musicList));
 
+        tb_albumColTipo.setCellValueFactory(
+                new PropertyValueFactory<>("tipo"));
         tb_albumColNome.setCellValueFactory(
                 new PropertyValueFactory<>("nome"));
         tb_albumColAno.setCellValueFactory(
@@ -92,6 +95,10 @@ public class BuscarController {
                 new PropertyValueFactory<>("autor"));
         tb_albumColMusicas.setCellValueFactory(
                 new PropertyValueFactory<>("musicas"));
+        tb_albumColPrateleira.setCellValueFactory(
+                new PropertyValueFactory<>("prateleira"));
+        tb_albumColPosicao.setCellValueFactory(
+                new PropertyValueFactory<>("posicao"));
         tb_album.setItems(listaDeAlbums(albumList));
 
 
@@ -131,6 +138,18 @@ public class BuscarController {
             hb_album.setVisible(true);
             tf_string.setPromptText("Digite o nome do album ou o nome do autor");
         }
+    }
+    @FXML
+    private void janelaBuscar(){
+        GerenciadorJanelas.loadJanela(GerenciadorJanelas.PRINCIPAL);
+    }
+    @FXML
+    private void janelaGerenciar(){
+        GerenciadorJanelas.loadJanela(GerenciadorJanelas.JANELA_GERENCIAR);
+    }
+    @FXML
+    private void janelaAjuda(){
+        GerenciadorJanelas.loadJanela(GerenciadorJanelas.ADD_ALBUM);
     }
 
     @FXML
@@ -175,11 +194,15 @@ public class BuscarController {
             tb_autor.setItems(listaDeAutor(autorList));
         }else{
             albumList.clear();
-            ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum(tf_string.getText());
-            int number = 0;
-            if(albums !=null)
-            for(Album a:albums){
-                albumList.add(new AlbumTb(a.getNome(),a.getAnoLancamento(),a.getNumeroMusicas(),a.getAutor().getNome(), a.getMusicas()));
+            ArrayList<Prateleira> prateleiras  = new ArrayList<>(Gerenciador.getInstance().getPrateleiras());
+
+            for(Prateleira p:prateleiras) {
+                for(Item i:p.getListItems()){
+                    if(i.getAlbum().getAutor().getNome().toLowerCase().contains(tf_string.getText().toLowerCase()) || i.getAlbum().getNome().toLowerCase().contains(tf_string.getText().toLowerCase())){
+                        albumList.add(new AlbumTb(i.getTipo(),i.getAlbum().getNome(), i.getAlbum().getAnoLancamento(), i.getAlbum().getNumeroMusicas(), i.getAlbum().getAutor().getNome(), i.getAlbum().getMusicas(),p.getNumero(),i.getPosicao()));
+                    }
+
+                }
             }
             tb_album.setItems(listaDeAlbums(albumList));
         }

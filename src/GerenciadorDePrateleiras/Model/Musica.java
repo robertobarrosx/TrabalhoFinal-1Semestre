@@ -1,8 +1,9 @@
 package GerenciadorDePrateleiras.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Musica {
+public class Musica implements Serializable {
     private String nome;
     private ArrayList<String> compositores;
     private double duracao;
@@ -26,22 +27,42 @@ public class Musica {
     }
 
     @Override
-    public String toString() {
-        String past;
-        past = "Musica: "+nome;
+    public String toString(){
+
+        String past = nome+" - ";
         boolean entrou = false;
-        if(compositores.size()>1)
-            past += " Compositores: ";
-        else past += " Compositor: ";
+        boolean entrou2 = false;
+
         for(String comp:compositores){
-            if(entrou)
-                past+= ", ";
+            if(entrou) {
+                if(!entrou2) {
+                    past += " ft. ";
+                    entrou2 = true;
+                }else{
+                    past += ", ";
+                }
+            }
             past+= comp;
             entrou = true;
         }
-            past += " Duração: "+duracao;
-
-
-       return past;
+        return past;
     }
+//    public String toString() {
+//        String past;
+//        past = "Musica: "+nome;
+//        boolean entrou = false;
+//        if(compositores.size()>1)
+//            past += " Compositores: ";
+//        else past += " Compositor: ";
+//        for(String comp:compositores){
+//            if(entrou)
+//                past+= ", ";
+//            past+= comp;
+//            entrou = true;
+//        }
+//            past += " Duração: "+duracao;
+//
+//
+//       return past;
+//    }
 }

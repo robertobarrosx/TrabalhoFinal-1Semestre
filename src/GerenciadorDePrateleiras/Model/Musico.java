@@ -1,6 +1,6 @@
 package GerenciadorDePrateleiras.Model;
 
-public class Musico extends Autor{
+public class Musico extends Autor {
 
     public Musico(String nome, String cidadeOrigem, int anoNascimento) {
         super(nome, cidadeOrigem, anoNascimento);

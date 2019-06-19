@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="927.0" prefWidth="1477.0" stylesheets="@../Resources/img/dark.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GerenciadorDePrateleiras.Control.BuscarController">
+<VBox prefHeight="927.0" prefWidth="1477.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GerenciadorDePrateleiras.Control.BuscarController">
 
         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1427.0" spacing="10.0" style="-fx-background-color: #374754;">
                 <ImageView fitHeight="61.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
@@ -30,12 +30,9 @@
         </HBox>
         <HBox prefHeight="947.0" prefWidth="1631.0">
                 <VBox prefHeight="851.0" prefWidth="433.0" spacing="1.0" style="-fx-background-color: #374754;">
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar" />
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Items" />
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Albums" />
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Autores" />
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar Musicas" />
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda" />
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar" onAction="#janelaBuscar"/>
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar" onAction="#janelaGerenciar"/>
+                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda" onAction="#janelaAjuda" />
                     <padding>
                         <Insets left="10.0" right="10.0" top="60.0" />
                     </padding>
@@ -58,24 +55,18 @@
 
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="481.0" spacing="10.0" GridPane.rowIndex="1">
             <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
                   <Image url="@../Resources/img/icons8-gravar-música-64.png" />
-               </image>
             </ImageView>
                                 <RadioButton fx:id="rb_musica" mnemonicParsing="false" onAction="#mudarInterface" selected="true" style="-fx-font-size: 18;" text="Musica">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="tipoBusca" />
                                     </toggleGroup></RadioButton>
             <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
                   <Image url="@../Resources/img/icons8-usuário-batendo-à-máquina-de-escrever-100.png" />
-               </image>
             </ImageView>
                                 <RadioButton fx:id="rb_autor" mnemonicParsing="false" onAction="#mudarInterface" style="-fx-font-size: 18;" text="Autor" toggleGroup="$tipoBusca" />
             <ImageView fitHeight="57.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
                   <Image url="@../Resources/img/icons8-biblioteca-de-música-filled-100.png" />
-               </image>
             </ImageView>
                                 <RadioButton fx:id="rb_album" mnemonicParsing="false" onAction="#mudarInterface" style="-fx-font-size: 18;" text="Album" toggleGroup="$tipoBusca" />
                             <opaqueInsets>
@@ -158,12 +149,15 @@
                             </padding>
                                 <TableView fx:id="tb_album" blendMode="HARD_LIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="591.0" prefWidth="1258.0" style="-fx-alignment: center;">
                                     <columns>
-                                        <TableColumn prefWidth="50" />
-                                        <TableColumn fx:id="tb_albumColNome" prefWidth="156.0" style="-fx-alignment: center;" text="Nome" />
+                                        <TableColumn prefWidth="20" />
+                                        <TableColumn fx:id="tb_albumColTipo" prefWidth="70.0" style="-fx-alignment: center;" text="Midia" />
                                         <TableColumn fx:id="tb_albumColAutor" prefWidth="156.0" style="-fx-alignment: center;" text="Autor" />
-                                        <TableColumn fx:id="tb_albumColAno" prefWidth="156.0" style="-fx-alignment: center;" text="Ano de Lançamento" />
-                                        <TableColumn fx:id="tb_albumColQtdMusicas" prefWidth="200.0" style="-fx-alignment: center;" text="Quantidade de Musicas" />
+                                        <TableColumn fx:id="tb_albumColNome" prefWidth="156.0" style="-fx-alignment: center;" text="Titulo" />
+                                        <TableColumn fx:id="tb_albumColAno" prefWidth="130" style="-fx-alignment: center;" text="Ano de Lançamento" />
+                                        <TableColumn fx:id="tb_albumColQtdMusicas" prefWidth="70.0" style="-fx-alignment: center;" text="Faixas" />
                                         <TableColumn fx:id="tb_albumColMusicas" prefWidth="370.0" style="-fx-alignment: center;" text="Musicas" />
+                                        <TableColumn fx:id="tb_albumColPrateleira" prefWidth="63.0" style="-fx-alignment: center;" text="Prateleira" />
+                                        <TableColumn fx:id="tb_albumColPosicao" prefWidth="63.0" style="-fx-alignment: center;" text="Posição" />
                                     </columns>
                                     <HBox.margin>
                                         <Insets left="10.0" right="10.0" />

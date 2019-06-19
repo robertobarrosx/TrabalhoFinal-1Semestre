@@ -1,8 +1,9 @@
 package GerenciadorDePrateleiras.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Album {
+public class Album implements Serializable {
     private String nome;
     private int anoLancamento;
     private int numeroMusicas;
@@ -17,6 +18,13 @@ public class Album {
         this.autor = autor;
     }
 
+    public Album(String nome, int anoLancamento, Autor autor){
+        this.nome = nome;
+        this.anoLancamento = anoLancamento;
+        this.numeroMusicas = 0;
+        this.musicas = new ArrayList<>();
+        this.autor = autor;
+    }
     public String getNome() {
         return nome;
     }

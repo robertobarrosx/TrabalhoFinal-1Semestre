@@ -1,15 +1,21 @@
 package GerenciadorDePrateleiras.Control;
 
 import GerenciadorDePrateleiras.Model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Gerenciador implements Serializable {
-    private ArrayList<Prateleira> prateleiras;
+    private ObservableList<Prateleira> prateleiras;
+    private ObservableList<Item> items;
+    private ObservableList<Autor> autores;
+
+    private String ARQUIVO="prateleiras.bin";
 
     private Gerenciador(){
-        prateleiras = new ArrayList<>();
+        prateleiras = FXCollections.observableArrayList();
         criarprateleiras();
     }
     private static Gerenciador instance;
@@ -19,7 +25,19 @@ public class Gerenciador implements Serializable {
         }
         return instance;
     }
-
+    public ObservableList<Item> getItems(){
+        items = FXCollections.observableArrayList();
+        for(Prateleira p:prateleiras){
+            items.addAll(p.getListItems());
+        }
+        return FXCollections.unmodifiableObservableList(items);
+    }
+    public ObservableList<Autor> getAutores(){
+        for(Item a:items){
+            autores.add(a.getAlbum().getAutor());
+        }
+        return FXCollections.unmodifiableObservableList(autores);
+    }
     public void adicionarPrateleira(Prateleira prateleira){
         this.prateleiras.add(prateleira);
     }
@@ -27,7 +45,7 @@ public class Gerenciador implements Serializable {
         this.prateleiras.remove(prateleira);
     }
     private void criarprateleiras(){
-        prateleiras = new ArrayList<>();
+        prateleiras = FXCollections.observableArrayList();
         for(int i =0;i<10;i++) {
             Prateleira prateleira = new Prateleira("CD", 2);
             prateleira.setNumero(i+1);
@@ -58,7 +76,7 @@ public class Gerenciador implements Serializable {
         musicas.add(new Musica("Amanhã",compositores,3.2));
         musicas.add(new Musica("Hoje",compositor2,3.4));
         Album album = new Album("Carne Unha",2000, musicas,autor2);
-        adicionarItem(new Item("Vini",album));
+        adicionarItem(new Item("Vinil",album));
         album = new Album("Alma Gemea",2005, musicas,autor);
         adicionarItem(new Item("K7",album));
         album = new Album("Alma Gemea",2000, musicas,autor);
@@ -101,8 +119,8 @@ public class Gerenciador implements Serializable {
             }
         }
     }
-    public ArrayList<Prateleira> getPrateleiras() {
-        return prateleiras;
+    public ObservableList<Prateleira> getPrateleiras() {
+        return FXCollections.unmodifiableObservableList(prateleiras);
     }
 
 
@@ -190,6 +208,25 @@ public class Gerenciador implements Serializable {
 //    A posição de cada item deve ser calculada automaticamente, indicando o número da prateleira (1..10) e também
 //    a posição dentro da prateleira (1..n). A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
 
+    public boolean carregaDados() throws IOException,ClassNotFoundException{
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(ARQUIVO)));
+        ArrayList<Prateleira> listaLocal = (ArrayList<Prateleira>)ois.readObject();
+        prateleiras.clear();
+        prateleiras.addAll(listaLocal);
+        ois.close();
+        return true;
+    }
+    public void salvaDados() throws IOException{
+
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(ARQUIVO)));
+
+        ArrayList<Prateleira> listaLocal = new ArrayList<>(this.prateleiras);
+
+        oos.writeObject(listaLocal);
+
+        oos.close();
+    }
     public void AdicionarAutor(Autor autor){
 
     }

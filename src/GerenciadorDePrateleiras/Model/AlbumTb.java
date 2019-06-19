@@ -11,12 +11,17 @@ public class AlbumTb {
     private final SimpleIntegerProperty numeroMusicas;
     private final SimpleStringProperty autor;
     private final SimpleStringProperty musicas;
-
-    public AlbumTb(String nome, int anoLancamento, int numeroMusicas, String autor, ArrayList<Musica> musicas) {
+    private final SimpleIntegerProperty posicao;
+    private final SimpleIntegerProperty prateleira;
+    private final SimpleStringProperty tipo;
+    public AlbumTb(String tipo,String nome, int anoLancamento, int numeroMusicas, String autor, ArrayList<Musica> musicas,int prateleira, int posicao) {
         this.nome = new SimpleStringProperty(nome);
         this.anoLancamento = new SimpleIntegerProperty(anoLancamento);
         this.numeroMusicas = new SimpleIntegerProperty(numeroMusicas);
         this.autor = new SimpleStringProperty(autor);
+        this.posicao = new SimpleIntegerProperty(posicao);
+        this.tipo = new SimpleStringProperty(tipo);
+        this.prateleira = new SimpleIntegerProperty(prateleira);
         String pa = "";
         boolean entrou = false;
         for(Musica m:musicas){
@@ -27,7 +32,15 @@ public class AlbumTb {
         }
         this.musicas = new SimpleStringProperty(pa);
     }
-
+    public int getPosicao(){
+        return this.posicao.get();
+    }
+    public int getPrateleira(){
+        return this.prateleira.get();
+    }
+    public String getTipo(){
+        return this.tipo.get();
+    }
     public String getNome() {
         return nome.get();
     }

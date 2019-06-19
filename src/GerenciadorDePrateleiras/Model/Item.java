@@ -1,6 +1,8 @@
 package GerenciadorDePrateleiras.Model;
 
-public class Item implements Comparable<Item>{
+import java.io.Serializable;
+
+public class Item implements Comparable<Item>, Serializable {
     private String tipo;
     private Album album;
     private int posicao;

@@ -1,8 +1,12 @@
 package GerenciadorDePrateleiras.Model;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Prateleira {
+public class Prateleira implements Serializable {
     private ArrayList<Item> items;
     private int tamanho;
     private String tipoItem;
