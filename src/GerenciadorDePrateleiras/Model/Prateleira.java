@@ -40,6 +40,10 @@ public class Prateleira implements Serializable {
             a.setPosicao(items.indexOf(a)+1);
         }
     }
+    public void editarItem(Item antigo,Item novo){
+        removerItem(antigo);
+        adicionarItem(novo);
+    }
     public void removerItem(Item i){
         this.items.remove(i);
         Collections.sort(this.items);

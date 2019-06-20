@@ -19,7 +19,7 @@ public class Gerenciador implements Serializable {
         criarprateleiras();
     }
     private static Gerenciador instance;
-    public static Gerenciador getInstance(){
+    public static synchronized Gerenciador getInstance(){
         if(instance == null){
             instance = new Gerenciador();
         }
@@ -32,9 +32,17 @@ public class Gerenciador implements Serializable {
         }
         return FXCollections.unmodifiableObservableList(items);
     }
+    public void adicionarAutor(Autor autor){
+        if(autores == null)
+            autores = FXCollections.observableArrayList();
+        autores.add(autor);
+    }
     public ObservableList<Autor> getAutores(){
-        for(Item a:items){
-            autores.add(a.getAlbum().getAutor());
+        if(autores == null) {
+            autores =FXCollections.observableArrayList();
+            for (Item a : items) {
+                autores.add(a.getAlbum().getAutor());
+            }
         }
         return FXCollections.unmodifiableObservableList(autores);
     }
@@ -73,21 +81,23 @@ public class Gerenciador implements Serializable {
         Autor autor3 = new Banda("Panda","Paranaguá",1980);
         Autor autor4 = new Autor("Pietro","Paranaguá",1980);
         Autor autor5 = new Musico("Carlos","Paranaguá",1980);
-        musicas.add(new Musica("Amanhã",compositores,3.2));
-        musicas.add(new Musica("Hoje",compositor2,3.4));
-        Album album = new Album("Carne Unha",2000, musicas,autor2);
+        musicas.add(new Musica("Amanhã",compositores,"3:02m"));
+        musicas.add(new Musica("Hoje",compositor2,"3:04m"));
+        Album album = new Album("Carne Unha",2000, new ArrayList<>(musicas),autor2);
         adicionarItem(new Item("Vinil",album));
-        album = new Album("Alma Gemea",2005, musicas,autor);
+        album = new Album("Alma Gemea",2005, new ArrayList<>(musicas),autor);
         adicionarItem(new Item("K7",album));
-        album = new Album("Alma Gemea",2000, musicas,autor);
+        album = new Album("Alma Gemea",2000,new ArrayList<>(musicas) ,autor);
         adicionarItem(new Item("K7",album));
-        album = new Album("Carne Unha",2000, musicas,autor5);
+        album = new Album("Carne Unha",2000, new ArrayList<>(musicas),autor5);
         adicionarItem(new Item("K7",album));
-        album = new Album("Alma Perdida",2005, musicas,autor3);
+        album = new Album("Alma Perdida",2005, new ArrayList<>(musicas),autor3);
         adicionarItem(new Item("K7",album));
-        album = new Album("Alma Gemea",2000, musicas,autor4);
+        album = new Album("Alma Gemea",2000, new ArrayList<>(musicas),autor4);
         adicionarItem(new Item("K7",album));
     }
+
+
 
     public boolean adicionarItem(Item i){
         boolean inseriu = false;
@@ -111,6 +121,14 @@ public class Gerenciador implements Serializable {
 
         }while(!inseriu);
         return true;
+    }
+    public void editarItem(Item antigo,Item novo){
+        for(Prateleira p:prateleiras){
+            if(p.getListItems().contains(antigo)){
+                p.removerItem(antigo);
+                adicionarItem(novo);
+            }
+        }
     }
     public void removerItem(Item i){
         for(Prateleira p:prateleiras){
@@ -227,7 +245,5 @@ public class Gerenciador implements Serializable {
 
         oos.close();
     }
-    public void AdicionarAutor(Autor autor){
 
-    }
 }

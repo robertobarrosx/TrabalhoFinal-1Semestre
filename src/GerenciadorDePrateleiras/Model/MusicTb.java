@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class MusicTb {
     private final SimpleStringProperty nome;
     private final SimpleStringProperty compositores;
-    private final SimpleDoubleProperty duracao;
+    private final SimpleStringProperty duracao;
     private final SimpleStringProperty album;
 
 
-    public MusicTb(String nome, ArrayList<String> compositores, String album, double duracao) {
+    public MusicTb(String nome, ArrayList<String> compositores, String album, String duracao) {
         this.nome = new SimpleStringProperty(nome);
         String pa = "";
         boolean entrou = false;
@@ -23,7 +23,7 @@ public class MusicTb {
             entrou = true;
         }
         this.compositores = new SimpleStringProperty(pa);
-        this.duracao = new SimpleDoubleProperty(duracao);
+        this.duracao = new SimpleStringProperty(duracao);
         this.album = new SimpleStringProperty(album);
     }
 
@@ -35,7 +35,7 @@ public class MusicTb {
         return compositores.get();
     }
 
-    public double getDuracao() {
+    public String getDuracao() {
         return duracao.get();
     }
 

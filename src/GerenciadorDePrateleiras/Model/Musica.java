@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Musica implements Serializable {
     private String nome;
     private ArrayList<String> compositores;
-    private double duracao;
+    private String duracao;
 
-    public Musica(String nome,ArrayList<String> compositores,double duracao){
+    public Musica(String nome,ArrayList<String> compositores,String duracao){
         this.nome = nome;
         this.compositores = compositores;
         this.duracao = duracao;
@@ -22,7 +22,7 @@ public class Musica implements Serializable {
         return compositores;
     }
 
-    public double getDuracao() {
+    public String getDuracao() {
         return duracao;
     }
 

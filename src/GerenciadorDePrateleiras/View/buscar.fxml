@@ -30,10 +30,24 @@
         </HBox>
         <HBox prefHeight="947.0" prefWidth="1631.0">
                 <VBox prefHeight="851.0" prefWidth="433.0" spacing="1.0" style="-fx-background-color: #374754;">
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar" onAction="#janelaBuscar"/>
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar" onAction="#janelaGerenciar"/>
-                        <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda" onAction="#janelaAjuda" />
-                    <padding>
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../Resources/img/icons8-pesquisar-100.png" />
+                            </ImageView>
+                        </graphic></Button>
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaGerenciar" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../Resources/img/icons8-lady-window-music-100.png" />
+                            </ImageView>
+                        </graphic></Button>
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaAjuda" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda">
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../Resources/img/icons8-ajuda-100.png" />
+                            </ImageView>
+                        </graphic></Button><padding>
                         <Insets left="10.0" right="10.0" top="60.0" />
                     </padding>
                <HBox.margin>
@@ -171,7 +185,7 @@
                                 <ImageView fitHeight="60.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                         <Image url="@../Resources/img/icons8-pesquisar-100.png" />
                                 </ImageView>
-                                <Label style="-fx-font-size: 40; -fx-text-fill: black;" text="Buscar" />
+                                <Label style="-fx-font-size: 40; -fx-text-fill: white;" text="Buscar" />
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>

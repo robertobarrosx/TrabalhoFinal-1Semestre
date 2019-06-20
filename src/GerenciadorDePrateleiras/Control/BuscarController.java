@@ -23,7 +23,7 @@ public class BuscarController {
     @FXML
     private TableColumn<MusicTb,String> tb_musicaColNome, tb_musicaColNomeAlbum, tb_musicaColCompositores;
     @FXML
-    private TableColumn<MusicTb, ?> tb_musicaColDuracao;
+    private TableColumn<MusicTb, String> tb_musicaColDuracao;
 
     @FXML
     private TableColumn<AutorTb,String> tb_autorColTipo, tb_autorColNome, tb_autorColCidade,tb_autorColAlbum;
