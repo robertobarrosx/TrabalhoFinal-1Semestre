@@ -163,7 +163,7 @@ public class BuscarController {
     @FXML
     private void buscar(){
         if(rb_musica.isSelected()) {
-            ArrayList<Album> albums = Gerenciador.getInstance().buscarAlbum();
+            ArrayList<Album> albums = Grip.getInstance().buscarAlbum();
             musicList.clear();
             for (Album al : albums) {
                 for (Musica msc : al.getMusicas()) {
@@ -180,11 +180,11 @@ public class BuscarController {
             tb_musica.setItems(listaDeMusicas(musicList));
         }else if(rb_autor.isSelected()){
             autorList.clear();
-            ArrayList<Autor> autores = Gerenciador.getInstance().buscarAutor(tf_string.getText());
+            ArrayList<Autor> autores = Grip.getInstance().buscarAutor(tf_string.getText());
             if(autores != null)
             for(Autor a:autores){
                 ArrayList<String> pa = new ArrayList<>();
-                for(Album albs:Gerenciador.getInstance().buscarAlbum()){
+                for(Album albs: Grip.getInstance().buscarAlbum()){
                     if(albs.getAutor().equals(a))
                         pa.add(albs.getNome());
                 }
@@ -194,10 +194,10 @@ public class BuscarController {
             tb_autor.setItems(listaDeAutor(autorList));
         }else{
             albumList.clear();
-            ArrayList<Prateleira> prateleiras  = new ArrayList<>(Gerenciador.getInstance().getPrateleiras());
+            ArrayList<Prateleira> prateleiras  = new ArrayList<>(Grip.getInstance().getPrateleiras());
 
             for(Prateleira p:prateleiras) {
-                for(Item i:p.getListItems()){
+                for(Item i:p.getItems()){
                     if(i.getAlbum().getAutor().getNome().toLowerCase().contains(tf_string.getText().toLowerCase()) || i.getAlbum().getNome().toLowerCase().contains(tf_string.getText().toLowerCase())){
                         albumList.add(new AlbumTb(i.getTipo(),i.getAlbum().getNome(), i.getAlbum().getAnoLancamento(), i.getAlbum().getNumeroMusicas(), i.getAlbum().getAutor().getNome(), i.getAlbum().getMusicas(),p.getNumero(),i.getPosicao()));
                     }

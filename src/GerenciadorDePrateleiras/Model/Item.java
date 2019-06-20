@@ -10,7 +10,6 @@ public class Item implements Comparable<Item>, Serializable {
     public Item(String tipo, Album album){
         this.tipo = tipo;
         this.album = album;
-       // this.posicao = posicao;
     }
 
     public Album getAlbum() {
@@ -54,6 +53,12 @@ public class Item implements Comparable<Item>, Serializable {
         return 0;
     }
 
-//    A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
+    @Override
+    public String toString() {
+        return this.album.getAutor().getNome()+" - "+this.album.getNome();
+    }
+
+
+    //    A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
 
 }

@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,9 +55,9 @@ public class GerenciarController {
 
     @FXML
     public void initialize(){
-        prateleiras = Gerenciador.getInstance().getPrateleiras();
+        prateleiras = Grip.getInstance().getPrateleiras();
 
-        items = Gerenciador.getInstance().getItems();
+        items = Grip.getInstance().getItems();
         //adiciona um monitor, para verificar qualquer mudança na lista.
         //quando uma mudança ocorre (inclusão, remoção) o método onChange é executado
         //utilizamos aqui para atualizar o text com a quantidade de tarefas cadastradas
@@ -110,7 +109,7 @@ public class GerenciarController {
                     else
                         imageView.setImage(miniIconeVinils);
 
-                    setText(item.getAlbum().getAutor().getNome()+" - "+item.getAlbum().getNome());
+                    setText(item.toString());
                     setGraphic(imageView);
                 }
             }
@@ -223,7 +222,7 @@ public class GerenciarController {
 
                 Autor autor = controle.pegaResultado();
                 if (autor != null) {
-                    Gerenciador.getInstance().adicionarAutor(autor);
+                    Grip.getInstance().adicionarAutor(autor);
                 }
             }
         } catch (IOException e) {
@@ -275,8 +274,8 @@ public class GerenciarController {
                 tipo = "Vinil";
             }
             Album album = new Album(titulo, ano, autor);
-            Gerenciador.getInstance().editarItem(ltv_albums.getSelectionModel().getSelectedItem(),new Item(tipo, album));
-            ltv_albums.setItems(Gerenciador.getInstance().getItems());
+            Grip.getInstance().editarItem(ltv_albums.getSelectionModel().getSelectedItem(),new Item(tipo, album));
+            ltv_albums.setItems(Grip.getInstance().getItems());
             apagarTela();
         }catch (NullPointerException e){
             messagemERRO("Presta Ateção!","Ocorreu um erro","Escolha um autor antes de cadastrar album");
@@ -301,8 +300,8 @@ public class GerenciarController {
                 tipo = "Vinil";
             }
             Album album = new Album(titulo, ano, autor);
-            Gerenciador.getInstance().adicionarItem(new Item(tipo, album));
-            ltv_albums.setItems(Gerenciador.getInstance().getItems());
+            Grip.getInstance().adicionarItem(new Item(tipo, album));
+            ltv_albums.setItems(Grip.getInstance().getItems());
             apagarTela();
         }catch (NullPointerException e){
             messagemERRO("Presta Ateção!","Ocorreu um erro","Escolha um autor antes de cadastrar album");
@@ -396,7 +395,7 @@ public class GerenciarController {
         hb_editarAlbum.setVisible(false);
         hb_editarMusica.setVisible(false);
         hb_adicionarMusica.setVisible(false);
-        cbAutor_hb_addAlbum.setItems(Gerenciador.getInstance().getAutores());
+        cbAutor_hb_addAlbum.setItems(Grip.getInstance().getAutores());
 
     }
     @FXML
@@ -411,7 +410,7 @@ public class GerenciarController {
             hb_editarMusica.setVisible(false);
             hb_adicionarMusica.setVisible(false);
 
-            cbAutor_hb_editarAlbum.setItems(Gerenciador.getInstance().getAutores());
+            cbAutor_hb_editarAlbum.setItems(Grip.getInstance().getAutores());
             cbAutor_hb_editarAlbum.getSelectionModel().select(item.getAlbum().getAutor());
             tfTitulo_hb_editarAlbum.setText(item.getAlbum().getNome());
             if (item.getTipo().compareTo("K7") == 0) {
@@ -437,8 +436,8 @@ public class GerenciarController {
         try {
             Item item = ltv_albums.getSelectionModel().getSelectedItem();
             item.getAlbum().getNome();
-            Gerenciador.getInstance().removerItem(item);
-            ltv_albums.setItems(Gerenciador.getInstance().getItems());
+            Grip.getInstance().removerItem(item);
+            ltv_albums.setItems(Grip.getInstance().getItems());
             ltv_musicas.getItems().clear();
             apagarTela();
         }catch (NullPointerException e){

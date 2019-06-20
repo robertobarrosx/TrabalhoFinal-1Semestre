@@ -1,6 +1,6 @@
 package GerenciadorDePrateleiras;
 
-import GerenciadorDePrateleiras.Control.Gerenciador;
+import GerenciadorDePrateleiras.Model.Grip;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -57,7 +57,7 @@ public class MainX extends Application {
         super.init();
         try{
 
-            Gerenciador.getInstance().carregaDados();
+            Grip.getInstance().carregaDados();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class MainX extends Application {
 
         try{
 
-            Gerenciador.getInstance().salvaDados();
+            Grip.getInstance().salvaDados();
 
         }catch (Exception e){
             e.printStackTrace();

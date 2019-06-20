@@ -1,34 +1,32 @@
-package GerenciadorDePrateleiras.Control;
+package GerenciadorDePrateleiras.Model;
 
-import GerenciadorDePrateleiras.Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class Gerenciador implements Serializable {
+public class Grip implements Serializable {
     private ObservableList<Prateleira> prateleiras;
-    private ObservableList<Item> items;
     private ObservableList<Autor> autores;
 
     private String ARQUIVO="prateleiras.bin";
 
-    private Gerenciador(){
+    private Grip(){
         prateleiras = FXCollections.observableArrayList();
         criarprateleiras();
     }
-    private static Gerenciador instance;
-    public static synchronized Gerenciador getInstance(){
+    private static Grip instance;
+    public static synchronized Grip getInstance(){
         if(instance == null){
-            instance = new Gerenciador();
+            instance = new Grip();
         }
         return instance;
     }
     public ObservableList<Item> getItems(){
-        items = FXCollections.observableArrayList();
+        ObservableList<Item> items = FXCollections.observableArrayList();
         for(Prateleira p:prateleiras){
-            items.addAll(p.getListItems());
+            items.addAll(p.getItems());
         }
         return FXCollections.unmodifiableObservableList(items);
     }
@@ -40,33 +38,27 @@ public class Gerenciador implements Serializable {
     public ObservableList<Autor> getAutores(){
         if(autores == null) {
             autores =FXCollections.observableArrayList();
-            for (Item a : items) {
+            for (Item a : getItems()) {
                 autores.add(a.getAlbum().getAutor());
             }
         }
         return FXCollections.unmodifiableObservableList(autores);
     }
-    public void adicionarPrateleira(Prateleira prateleira){
-        this.prateleiras.add(prateleira);
-    }
-    public void removerPrateleira(Prateleira prateleira){
-        this.prateleiras.remove(prateleira);
-    }
     private void criarprateleiras(){
         prateleiras = FXCollections.observableArrayList();
         for(int i =0;i<10;i++) {
-            Prateleira prateleira = new Prateleira("CD", 2);
+            Prateleira prateleira = new Prateleira("CD", 200);
             prateleira.setNumero(i+1);
             prateleiras.add(prateleira);
 
         }
         for(int i =0;i<10;i++) {
-            Prateleira prateleira = new Prateleira("K7", 2);
+            Prateleira prateleira = new Prateleira("K7", 150);
             prateleira.setNumero(i+1);
             prateleiras.add(prateleira);
         }
         for(int i =0;i<10;i++) {
-            Prateleira prateleira = new Prateleira("Vinil", 2);
+            Prateleira prateleira = new Prateleira("Vinil", 100);
             prateleira.setNumero(i+1);
             prateleiras.add(prateleira);
         }
@@ -98,7 +90,6 @@ public class Gerenciador implements Serializable {
     }
 
 
-
     public boolean adicionarItem(Item i){
         boolean inseriu = false;
         int x=0;
@@ -111,8 +102,8 @@ public class Gerenciador implements Serializable {
                 continue;
             }
             this.prateleiras.get(x).adicionarItem(i);
-            if(this.prateleiras.get(x).getListItems().size() > this.prateleiras.get(x).getTamanho()){
-                i = this.prateleiras.get(x).getListItems().get(this.prateleiras.get(x).getListItems().size()-1);
+            if(this.prateleiras.get(x).getItems().size() > this.prateleiras.get(x).getTamanho()){
+                i = this.prateleiras.get(x).getItems().get(this.prateleiras.get(x).getItems().size()-1);
                 this.prateleiras.get(x).removerItem(i);
                 x++;
             }else{
@@ -123,8 +114,9 @@ public class Gerenciador implements Serializable {
         return true;
     }
     public void editarItem(Item antigo,Item novo){
+        novo.getAlbum().getMusicas().addAll(antigo.getAlbum().getMusicas());
         for(Prateleira p:prateleiras){
-            if(p.getListItems().contains(antigo)){
+            if(p.getItems().contains(antigo)){
                 p.removerItem(antigo);
                 adicionarItem(novo);
             }
@@ -132,7 +124,7 @@ public class Gerenciador implements Serializable {
     }
     public void removerItem(Item i){
         for(Prateleira p:prateleiras){
-            if(p.getListItems().contains(i)){
+            if(p.getItems().contains(i)){
                 p.removerItem(i);
             }
         }
@@ -146,7 +138,7 @@ public class Gerenciador implements Serializable {
         ArrayList<Autor> autoresL = new ArrayList<>();
         boolean entrou = false;
         for(Prateleira p: this.prateleiras){
-            for(Item i: p.getListItems()){
+            for(Item i: p.getItems()){
                 if(i.getAlbum().getAutor().getNome().toLowerCase().contains(autor.toLowerCase())){
                     if(!autoresL.contains(i.getAlbum().getAutor())) {
                         autoresL.add(i.getAlbum().getAutor());
@@ -157,31 +149,14 @@ public class Gerenciador implements Serializable {
         }
         if(!entrou)
             return null;
-
         return autoresL;
     }
 
-    public ArrayList<Album> buscarAlbum (String nome){
-        ArrayList<Album> albumsL = new ArrayList<>();
-        boolean entrou = false;
-        for(Prateleira p: this.prateleiras){
-            for(Item i: p.getListItems()){
-                if(i.getAlbum().getAutor().getNome().toLowerCase().contains(nome.toLowerCase()) || i.getAlbum().getNome().toLowerCase().contains(nome.toLowerCase())){
-                    albumsL.add(i.getAlbum());
-                    entrou = true;
-                }
-            }
-        }
-        if(!entrou)
-            return null;
-
-        return albumsL;
-    }
     public ArrayList<Album> buscarAlbum (){
         ArrayList<Album> albumsL = new ArrayList<>();
         boolean entrou = false;
         for(Prateleira p: this.prateleiras){
-            for(Item i: p.getListItems()){
+            for(Item i: p.getItems()){
                      albumsL.add(i.getAlbum());
                      entrou = true;
             }
@@ -191,27 +166,6 @@ public class Gerenciador implements Serializable {
         return albumsL;
     }
 
-
-    public ArrayList<Musica> buscarMusica(String nome) {
-        ArrayList<Musica> musicasL = new ArrayList<>();
-        boolean entrou = false;
-        for (Prateleira p : this.prateleiras) {
-            for (Item i : p.getListItems()) {
-                for (Musica m : i.getAlbum().getMusicas()) {
-                    for (String compositor : m.getCompositores()) {
-                        if (compositor.toLowerCase().contains(nome.toLowerCase()) || m.getNome().toLowerCase().contains(nome.toLowerCase())) {
-                            musicasL.add(m);
-                            entrou = true;
-                        }
-                    }
-                }
-            }
-        }
-        if (!entrou)
-            return null;
-
-        return musicasL;
-    }
 //    Manter (adicionar e remover) autor/banda: (Nome, Cidade de Origem, Ano de Nascimento)
 //    Manter (adicionar e remover) de álbum: (Nome, Ano de Lançamento, Número de Músicas, Músicas, Autor/Banda)
 //    Manter (adicionar e remover) de música: (Nome, Compositores, Duração)
@@ -227,6 +181,15 @@ public class Gerenciador implements Serializable {
 //    a posição dentro da prateleira (1..n). A ordem dos itens deve ser a alfabética por nome do autor/banda, nome do álbum, ano de lançamento.
 
     public boolean carregaDados() throws IOException,ClassNotFoundException{
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(ARQUIVO)));
+        ArrayList<Prateleira> listaLocal = (ArrayList<Prateleira>)ois.readObject();
+        prateleiras.clear();
+        prateleiras.addAll(listaLocal);
+        ois.close();
+        return true;
+    }
+    public boolean carregaDadosTXT() throws IOException,ClassNotFoundException{
 
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(ARQUIVO)));
         ArrayList<Prateleira> listaLocal = (ArrayList<Prateleira>)ois.readObject();

@@ -51,10 +51,10 @@ public class Prateleira implements Serializable {
             a.setPosicao(items.indexOf(a)+1);
         }
     }
-    public ArrayList<Item> getListItems(){
+    public ArrayList<Item> getItems(){
         return items;
     }
-    public void imprimirLista(){
+   /* public void imprimirLista(){
         boolean vazia = true;
         for(Item i:items){
             System.out.println("Cantor/Banda:" + i.getAlbum().getAutor().getNome()+" Album: "+i.getAlbum().getNome()+" Ano de lançamento: "+i.getAlbum().getAnoLancamento()+" Prateleira: "+this.numero+" Posição: "+i.getPosicao() +" Tipo: "+tipoItem);
@@ -64,6 +64,6 @@ public class Prateleira implements Serializable {
             System.out.println("Vazia\n");
         else
         System.out.println("\n");
-    }
+    }*/
 
 }
