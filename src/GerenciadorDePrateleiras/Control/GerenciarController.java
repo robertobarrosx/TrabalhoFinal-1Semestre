@@ -262,6 +262,10 @@ public class GerenciarController {
     @FXML
     private void onCofirmarEditarAlbum(){
         try {
+            if(tfTitulo_hb_editarAlbum.getText().trim().compareTo("") == 0 || tfAno_hb_editarAlbum.getText().trim().compareTo("")==0) {
+                Musica musica = null;
+                musica.getNome();
+            }
             int ano = Integer.parseInt(tfAno_hb_editarAlbum.getText());
             String titulo = tfTitulo_hb_editarAlbum.getText();
             Autor autor = cbAutor_hb_editarAlbum.getValue();
@@ -278,7 +282,7 @@ public class GerenciarController {
             ltv_albums.setItems(Grip.getInstance().getItems());
             apagarTela();
         }catch (NullPointerException e){
-            messagemERRO("Presta Ateção!","Ocorreu um erro","Escolha um autor antes de cadastrar album");
+            messagemERRO("Presta Ateção!","Ocorreu um erro","Preencha todos os campos antes de cadastrar album");
         }catch (NumberFormatException e) {
             messagemERRO("Presta Ateção!","Ocorreu um erro","Digite apenas numeros");
         }catch(Exception e){
@@ -288,6 +292,11 @@ public class GerenciarController {
     @FXML
     private void onCofirmarAddAlbum(){
         try {
+            if(tfTitulo_hb_addAlbum.getText().trim().compareTo("") == 0 || tfAno_hb_addAlbum.getText().trim().compareTo("")==0) {
+                Musica musica = null;
+                musica.getNome();
+            }
+
             int ano = Integer.parseInt(tfAno_hb_addAlbum.getText());
             String titulo = tfTitulo_hb_addAlbum.getText();
             Autor autor = cbAutor_hb_addAlbum.getValue();
@@ -304,7 +313,7 @@ public class GerenciarController {
             ltv_albums.setItems(Grip.getInstance().getItems());
             apagarTela();
         }catch (NullPointerException e){
-            messagemERRO("Presta Ateção!","Ocorreu um erro","Escolha um autor antes de cadastrar album");
+            messagemERRO("Presta Ateção!","Ocorreu um erro","Preencha todos os campos antes de cadastrar o album");
         }catch (NumberFormatException e) {
             messagemERRO("Presta Ateção!","Ocorreu um erro","Digite apenas numeros");
         }catch(Exception e){

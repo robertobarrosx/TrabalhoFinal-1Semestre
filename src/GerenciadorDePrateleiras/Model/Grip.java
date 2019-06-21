@@ -39,6 +39,7 @@ public class Grip implements Serializable {
         if(autores == null) {
             autores =FXCollections.observableArrayList();
             for (Item a : getItems()) {
+                if(!autores.contains(a.getAlbum().getAutor()))
                 autores.add(a.getAlbum().getAutor());
             }
         }
