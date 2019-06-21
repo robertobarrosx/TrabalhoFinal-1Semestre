@@ -21,7 +21,7 @@ import java.util.Optional;
 
 public class GerenciarController {
 
-    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds;
+    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds,iconeAutor;
     private ObservableList<Prateleira> prateleiras;
     private ObservableList<Item> items;
     @FXML
@@ -51,6 +51,7 @@ public class GerenciarController {
         miniIconeK7s = new Image(getClass().getResource("../Resources/img/minicassete.png").toExternalForm(),true);
         miniIconeCds = new Image(getClass().getResource("../Resources/img/minicd.png").toExternalForm(),true);
         miniIconeVinils = new Image(getClass().getResource("../Resources/img/minivinil.png").toExternalForm(),true);
+        iconeAutor = new Image(getClass().getResource("../Resources/img/autorAdd.png").toExternalForm(),true);
     }
 
     @FXML
@@ -185,7 +186,11 @@ public class GerenciarController {
     }
     @FXML
     private void addAutor(){
-        Dialog<ButtonType> dialog = new Dialog<>();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Adicionar Autor");
+
+        //DialogPane dialogPane = alert.getDialogPane();
+        DialogPane dialog = alert.getDialogPane();
 
 
         try {
@@ -196,28 +201,37 @@ public class GerenciarController {
                     .getResource("../view/addAutor.fxml"));
 
             Parent content = loader.load();
-            dialog.getDialogPane()
+            ImageView image = new ImageView();
+            image.setImage(iconeAutor);
+            dialog.setHeaderText("Preencha os campos");
+            dialog.setGraphic(image);
+            dialog.setContent(content);
+            /*dialog.getDialogPane()
                     .getButtonTypes().add(ButtonType.APPLY);
             dialog.getDialogPane()
                     .getButtonTypes().add(ButtonType.CANCEL);
-
-            for(ButtonType bt : dialog.getDialogPane().getButtonTypes()){
-                Button button = (Button) dialog.getDialogPane().lookupButton(bt);
-                button.getStyleClass().add("dialogButton");
-            }
-
-            content.getStylesheets().add(
+*/
+//            for(ButtonType bt : dialog.getDialogPane().getButtonTypes()){
+//                Button button = (Button) dialog.getDialogPane().lookupButton(bt);
+//                button.getStyleClass().add("dialogButton");
+//            }
+            dialog.getStyleClass().add("root");
+            dialog.getStylesheets().add(
                     getClass().getResource("../Resources/css/dark.css").toExternalForm());
+//            content.getStylesheets().add(
+//                    getClass().getResource("../Resources/css/dark.css").toExternalForm());
+//
+//            content.getStyleClass().add("root");
+//            dialog.getDialogPane()
+//                    .setContent(content);
+//            dialog.setTitle("Adicionar Autor");
 
-            content.getStyleClass().add("root");
-            dialog.getDialogPane()
-                    .setContent(content);
-            dialog.setTitle("Adicionar Autor");
+            Optional<ButtonType> resultado = alert.showAndWait();
+            //System.out.println(resultado.get());
 
-            Optional<ButtonType> resultado = dialog.showAndWait();
-
+           // System.out.println(controle.pegaResultado());
             if (resultado.isPresent() &&
-                    resultado.get() == ButtonType.APPLY) {
+                    resultado.get() == ButtonType.OK) {
                 ControllerAutor controle = loader.getController();
 
                 Autor autor = controle.pegaResultado();

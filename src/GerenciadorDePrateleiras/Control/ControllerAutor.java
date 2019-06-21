@@ -1,18 +1,23 @@
 package GerenciadorDePrateleiras.Control;
 
 import GerenciadorDePrateleiras.Model.Autor;
+import GerenciadorDePrateleiras.Model.Banda;
+import GerenciadorDePrateleiras.Model.Musico;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.util.Optional;
 
 public class ControllerAutor {
     @FXML
     private TextField tf_nome,tf_cidade,tf_ano;
-
+    @FXML
+    private JFXToggleButton tb_autor;
     public Autor pegaResultado(){
         Autor autor;
 
@@ -28,7 +33,11 @@ public class ControllerAutor {
             }
 
         try {
-            autor = new Autor(nome, cidade, Integer.parseInt(ano));
+            if(tb_autor.isSelected()) {
+                autor = new Banda(nome, cidade, Integer.parseInt(ano));
+            }else{
+                autor = new Musico(nome, cidade, Integer.parseInt(ano));
+            }
             return autor;
         }catch (Exception e){
             mensagem("Preencha o ano apenas com numeros!");
