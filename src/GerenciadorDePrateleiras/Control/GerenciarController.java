@@ -188,48 +188,21 @@ public class GerenciarController {
     private void addAutor(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Adicionar Autor");
-
-        //DialogPane dialogPane = alert.getDialogPane();
         DialogPane dialog = alert.getDialogPane();
-
-
         try {
-
             FXMLLoader loader = new FXMLLoader();
-
             loader.setLocation(getClass()
                     .getResource("../view/addAutor.fxml"));
-
             Parent content = loader.load();
             ImageView image = new ImageView();
             image.setImage(iconeAutor);
             dialog.setHeaderText("Preencha os campos");
             dialog.setGraphic(image);
             dialog.setContent(content);
-            /*dialog.getDialogPane()
-                    .getButtonTypes().add(ButtonType.APPLY);
-            dialog.getDialogPane()
-                    .getButtonTypes().add(ButtonType.CANCEL);
-*/
-//            for(ButtonType bt : dialog.getDialogPane().getButtonTypes()){
-//                Button button = (Button) dialog.getDialogPane().lookupButton(bt);
-//                button.getStyleClass().add("dialogButton");
-//            }
             dialog.getStyleClass().add("root");
             dialog.getStylesheets().add(
                     getClass().getResource("../Resources/css/dark.css").toExternalForm());
-//            content.getStylesheets().add(
-//                    getClass().getResource("../Resources/css/dark.css").toExternalForm());
-//
-//            content.getStyleClass().add("root");
-//            dialog.getDialogPane()
-//                    .setContent(content);
-//            dialog.setTitle("Adicionar Autor");
-
             Optional<ButtonType> resultado = alert.showAndWait();
-            //System.out.println(resultado.get());
-
-           // System.out.println(controle.pegaResultado());
             if (resultado.isPresent() &&
                     resultado.get() == ButtonType.OK) {
                 ControllerAutor controle = loader.getController();
