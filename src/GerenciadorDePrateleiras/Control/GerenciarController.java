@@ -1,11 +1,16 @@
 package GerenciadorDePrateleiras.Control;
 
 import GerenciadorDePrateleiras.GerenciadorJanelas;
+import GerenciadorDePrateleiras.MainX;
 import GerenciadorDePrateleiras.Model.*;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,15 +18,18 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
+import java.lang.reflect.Type;
+import java.util.*;
 
 public class GerenciarController {
 
-    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds,iconeAutor;
+    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds,iconeAutor,iconeImportar,iconeExportar;
     private ObservableList<Prateleira> prateleiras;
     private ObservableList<Item> items;
     @FXML
@@ -52,6 +60,8 @@ public class GerenciarController {
         miniIconeCds = new Image(getClass().getResource("../Resources/img/minicd.png").toExternalForm(),true);
         miniIconeVinils = new Image(getClass().getResource("../Resources/img/minivinil.png").toExternalForm(),true);
         iconeAutor = new Image(getClass().getResource("../Resources/img/autorAdd.png").toExternalForm(),true);
+        iconeImportar = new Image(getClass().getResource("../Resources/img/import.png").toExternalForm(),true);
+        iconeExportar = new Image(getClass().getResource("../Resources/img/export.png").toExternalForm(),true);
     }
 
     @FXML
@@ -151,6 +161,74 @@ public class GerenciarController {
 
 
 
+    }
+    private void carregarImport(File file){
+
+    }
+    @FXML
+    private void importarDados(){
+        final Stage stage = new Stage();
+        stage.setTitle("Escolha o arquivo de items");
+
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its")
+        );
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            String str="";
+            try {
+                Scanner scan = new Scanner(file);
+                while(scan.hasNextLine()){
+                    str += scan.nextLine();
+                }
+                scan.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<Item>>(){}.getType();
+            ArrayList<Item> userObject = gson.fromJson(str, listType);
+            ArrayList<String> strList = new  ArrayList<>();
+            ArrayList<String> strReject = new ArrayList<>();
+            for(Item i:userObject)
+
+                if(!Grip.getInstance().existItem(i)){
+                    strList.add(i.toString());
+                    Grip.getInstance().adicionarItem(i);
+                }else{
+                    strReject.add(i.toString());
+                }
+            messagemAviso("Importação de items","Items importados: "+strList.size(),"Items já existentes: "+strReject.size());
+
+        }
+
+        ltv_albums.setItems(Grip.getInstance().getItems());
+    }
+
+    @FXML
+    private void exportarDados(){
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Salvar Items");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its"));
+        //System.out.println(pic.getId());
+        File file = fileChooser.showSaveDialog(stage);
+        if (file != null) {
+            try {
+                Gson gson = new Gson();
+                String userJson = gson.toJson(Grip.getInstance().getItems());
+                Formatter fo = new Formatter(file);
+                fo.format("%s", userJson);
+                fo.flush();fo.close();
+                messagemAviso("Exportação de items", "Items exportados com sucesso","Items exportados: "+Grip.getInstance().getItems().size());
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
     @FXML
     private void janelaBuscar(){
@@ -309,29 +387,42 @@ public class GerenciarController {
     }
     @FXML
     private void confirmarAddMusica(){
-        String nome = tfTitulo_hb_addMusica.getText();
-        String duracao = tfDuracao_hb_addMusica.getText();
-        ArrayList<String> autor = new ArrayList<>();
-        String compositores[];
-        if(tfAutor_hb_addMusica.getText().contains(",") || tfAutor_hb_addMusica.getText().contains("/")) {
-            if(tfAutor_hb_addMusica.getText().contains("/"))
-                compositores = tfAutor_hb_addMusica.getText().split("/");
-            else
-            compositores = tfAutor_hb_addMusica.getText().split(",");
-            ArrayList<String> stringList = new ArrayList<String>(Arrays.asList(compositores));
-            autor.addAll(stringList);
-        }else{
-            autor.add(tfAutor_hb_addMusica.getText());
+        try {
+            if (tfTitulo_hb_addMusica.getText().trim().compareTo("") == 0 || tfAutor_hb_addMusica.getText().trim().compareTo("")==0|| tfDuracao_hb_addMusica.getText().trim().compareTo("") == 0 ){
+                Musica msc = null;
+                msc.getNome();
+            }
+            String nome = tfTitulo_hb_addMusica.getText();
+            String duracao = tfDuracao_hb_addMusica.getText();
+            ArrayList<String> autor = new ArrayList<>();
+            String compositores[];
+            if (tfAutor_hb_addMusica.getText().contains(",") || tfAutor_hb_addMusica.getText().contains("/")) {
+                if (tfAutor_hb_addMusica.getText().contains("/"))
+                    compositores = tfAutor_hb_addMusica.getText().split("/");
+                else
+                    compositores = tfAutor_hb_addMusica.getText().split(",");
+                ArrayList<String> stringList = new ArrayList<String>(Arrays.asList(compositores));
+                autor.addAll(stringList);
+            } else {
+                autor.add(tfAutor_hb_addMusica.getText());
+            }
+            Musica musica = new Musica(nome, autor, duracao);
+            Item item = ltv_albums.getSelectionModel().getSelectedItem();
+            item.getAlbum().adicionarMusica(musica);
+            apagarTela();
+            ltv_musicas.getItems().clear();
+            ltv_musicas.getItems().setAll(item.getAlbum().getMusicas());
+        }catch (NullPointerException e){
+            messagemERRO("Presta Ateção!","Ocorreu um erro","Preencha todos os campos antes de cadastrar uma Musica");
         }
-
-        Musica musica = new Musica(nome,autor,duracao);
-        Item item = ltv_albums.getSelectionModel().getSelectedItem();
-        item.getAlbum().adicionarMusica(musica);
-        ltv_musicas.getItems().clear();
-        ltv_musicas.getItems().setAll(item.getAlbum().getMusicas());
     }
     @FXML
     private void editarMusicaConfirmar(){
+        try {
+            if (tfTitulo_hb_editarMusica.getText().trim().compareTo("") == 0 || tfDuracao_hb_editarMusica.getText().compareTo("") == 0 ||  tfCompositor_hb_editarMusica.getText().trim().compareTo("")==0){
+                Musica msc = null;
+                msc.getNome();
+            }
         String nome = tfTitulo_hb_editarMusica.getText();
         String duracao = tfDuracao_hb_editarMusica.getText();
         ArrayList<String> autor = new ArrayList<>();
@@ -350,8 +441,12 @@ public class GerenciarController {
         Musica nova = new Musica(nome,autor,duracao);
         Item item = ltv_albums.getSelectionModel().getSelectedItem();
         item.getAlbum().editarMusica(antiga,nova);
+        apagarTela();
         ltv_musicas.getItems().clear();
         ltv_musicas.getItems().setAll(item.getAlbum().getMusicas());
+        }catch (NullPointerException e){
+            messagemERRO("Presta Ateção!","Ocorreu um erro","Preencha todos os campos antes de editar uma Musica");
+        }
     }
     @FXML
     private void apagarTela(){
@@ -454,6 +549,30 @@ public class GerenciarController {
            messagemERRO("Presta Atenção!","Ocorreu um erro","Selecione uma musica antes de tentar remover.");
        }
 
+    }
+    private void messagemAviso(String titulo, String erro,String msg){
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(erro);
+        alert.setContentText(msg);
+        ImageView image = new ImageView();
+        image.setFitHeight(50);
+        image.setFitWidth(50);
+        if(titulo.compareTo("Importação de items") == 0){
+            image.setImage(iconeImportar);
+            alert.setGraphic(image);
+        }
+        else if(titulo.compareTo("Exportação de items") == 0) {
+            image.setImage(iconeExportar);
+            alert.setGraphic(image);
+        }
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("../Resources/css/dark.css").toExternalForm());
+        dialogPane.getStyleClass().add("root");
+        Optional<ButtonType> resultado = alert.showAndWait();
     }
     private void messagemERRO(String titulo, String erro,String msg){
 

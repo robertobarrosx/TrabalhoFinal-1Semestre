@@ -63,7 +63,7 @@ public class Grip implements Serializable {
             prateleira.setNumero(i+1);
             prateleiras.add(prateleira);
         }
-        ArrayList<Musica> musicas = new ArrayList<>();
+       /* ArrayList<Musica> musicas = new ArrayList<>();
         ArrayList<String> compositores = new ArrayList<>();
         compositores.add("Armando");
         compositores.add("Lucio");
@@ -87,7 +87,7 @@ public class Grip implements Serializable {
         album = new Album("Alma Perdida",2005, new ArrayList<>(musicas),autor3);
         adicionarItem(new Item("K7",album));
         album = new Album("Alma Gemea",2000, new ArrayList<>(musicas),autor4);
-        adicionarItem(new Item("K7",album));
+        adicionarItem(new Item("K7",album));*/
     }
 
 
@@ -189,6 +189,22 @@ public class Grip implements Serializable {
         prateleiras.addAll(listaLocal);
         ois.close();
         return true;
+    }
+    public boolean existItem(Item item){
+        for(Prateleira a:prateleiras){
+            for(Item i:a.getItems()) {
+                if (item.getTipo().compareTo(i.getTipo()) == 0) {
+                    if (item.getAlbum().toString().compareTo(i.getAlbum().toString()) == 0) {
+                        if (item.getAlbum().getAutor().toString().compareTo(i.getAlbum().getAutor().toString()) == 0) {
+                            if (item.getAlbum().getMusicas().toString().compareTo(i.getAlbum().getMusicas().toString()) == 0) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
     public boolean carregaDadosTXT() throws IOException,ClassNotFoundException{
 

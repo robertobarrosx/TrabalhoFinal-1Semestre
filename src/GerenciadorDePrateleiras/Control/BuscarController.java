@@ -2,18 +2,28 @@ package GerenciadorDePrateleiras.Control;
 
 import GerenciadorDePrateleiras.GerenciadorJanelas;
 import GerenciadorDePrateleiras.Model.*;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class BuscarController {
 
 
+    private Image iconeImportar,iconeExportar;
     @FXML
     private TextField tf_string;
 
@@ -53,6 +63,11 @@ public class BuscarController {
     private ArrayList<MusicTb> musicList;
     private ArrayList<AlbumTb> albumList;
     private ArrayList<AutorTb> autorList;
+
+    public BuscarController(){
+        iconeImportar = new Image(getClass().getResource("../Resources/img/import.png").toExternalForm(),true);
+        iconeExportar = new Image(getClass().getResource("../Resources/img/export.png").toExternalForm(),true);
+    }
     private ObservableList<MusicTb> listaDeMusicas(List<MusicTb> lista) {
 
         return FXCollections.observableArrayList( lista);
@@ -153,12 +168,101 @@ public class BuscarController {
     }
 
     @FXML
+    private void importarDados(){
+        final Stage stage = new Stage();
+        stage.setTitle("Escolha o arquivo de items");
+
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its")
+        );
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            String str="";
+            try {
+                Scanner scan = new Scanner(file);
+
+
+                while(scan.hasNextLine()){
+                    str += scan.nextLine();
+                }
+                scan.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<Item>>(){}.getType();
+            ArrayList<Item> userObject = gson.fromJson(str, listType);
+            ArrayList<String> strList = new  ArrayList<>();
+            ArrayList<String> strReject = new ArrayList<>();
+            for(Item i:userObject)
+
+                if(!Grip.getInstance().existItem(i)){
+                    strList.add(i.toString());
+                    Grip.getInstance().adicionarItem(i);
+                }else{
+                    strReject.add(i.toString());
+                }
+            messagemAviso("Importação de items","Items importados: "+strList.size(),"Items já existentes: "+strReject.size());
+
+        }
+    }
+
+    @FXML
+    private void exportarDados(){
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Salvar Items");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its"));
+        //System.out.println(pic.getId());
+        File file = fileChooser.showSaveDialog(stage);
+        if (file != null) {
+            try {
+                Gson gson = new Gson();
+                String userJson = gson.toJson(Grip.getInstance().getItems());
+                Formatter fo = new Formatter(file);
+                fo.format("%s", userJson);
+                fo.flush();fo.close();
+                messagemAviso("Exportação de items", "Items exportados com sucesso","Items exportados: "+Grip.getInstance().getItems().size());
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    @FXML
     private void listarAlbums(){
 
     }
     @FXML
     private void listarMusicas(){
 
+    }
+    private void messagemAviso(String titulo, String erro,String msg){
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(erro);
+        alert.setContentText(msg);
+        ImageView image = new ImageView();
+        image.setFitHeight(50);
+        image.setFitWidth(50);
+        if(titulo.compareTo("Importação de items") == 0){
+            image.setImage(iconeImportar);
+            alert.setGraphic(image);
+        }
+        else if(titulo.compareTo("Exportação de items") == 0) {
+            image.setImage(iconeExportar);
+            alert.setGraphic(image);
+        }
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("../Resources/css/dark.css").toExternalForm());
+        dialogPane.getStyleClass().add("root");
+        Optional<ButtonType> resultado = alert.showAndWait();
     }
     @FXML
     private void buscar(){

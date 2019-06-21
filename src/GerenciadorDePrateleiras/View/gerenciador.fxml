@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -29,32 +30,42 @@
         </HBox>
         <HBox prefHeight="947.0" prefWidth="1631.0">
                 <VBox prefHeight="851.0" prefWidth="433.0" spacing="1.0" style="-fx-background-color: #374754;">
+         <HBox prefHeight="100.0" prefWidth="200.0">
+               <JFXButton onAction="#importarDados" text="Importar">
+                  <graphic>
+                     <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../Resources/img/import.png" />
+                     </ImageView>
+                  </graphic>
+               </JFXButton>
+               <JFXButton onAction="#exportarDados" text="Exportar">
+                  <graphic>
+                     <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <Image url="@../Resources/img/export.png" />
+                     </ImageView>
+                  </graphic>
+               </JFXButton>
+         </HBox>
                     <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaBuscar" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Buscar">
             <graphic>
                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
                      <Image url="@../Resources/img/icons8-pesquisar-100.png" />
-                  </image>
                </ImageView>
             </graphic></Button>
-                    <Button alignment="TOP_LEFT" mnemonicParsing="false"  prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar">
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Gerenciar">
             <graphic>
                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
                      <Image url="@../Resources/img/icons8-lady-window-music-100.png" />
-                  </image>
                </ImageView>
             </graphic></Button>
                     <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaAjuda" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda">
             <graphic>
                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
                      <Image url="@../Resources/img/icons8-ajuda-100.png" />
-                  </image>
                </ImageView>
             </graphic></Button>
                     <padding>
-                        <Insets left="10.0" right="10.0" top="60.0" />
+                        <Insets left="10.0" right="10.0" />
                     </padding>
                <HBox.margin>
                   <Insets />
@@ -81,10 +92,8 @@
                             <padding>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
-            <children>
 
                <HBox prefHeight="835.0" prefWidth="1172.0">
-                  <children>
                      <GridPane prefHeight="636.0" prefWidth="1184.0">
                        <columnConstraints>
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="320.0" />
@@ -96,19 +105,14 @@
                          <RowConstraints maxHeight="558.0" minHeight="10.0" prefHeight="554.0" vgrow="SOMETIMES" />
                          <RowConstraints maxHeight="204.0" minHeight="0.0" prefHeight="81.0" vgrow="SOMETIMES" />
                        </rowConstraints>
-                        <children>
                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                              <children>
                                  <ListView fx:id="ltv_albums" prefHeight="534.0" prefWidth="328.0" />
-                              </children>
                               <padding>
                                  <Insets left="10.0" right="10.0" />
                               </padding>
                            </HBox>
                            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                              <children>
                                  <ListView fx:id="ltv_musicas" prefHeight="502.0" prefWidth="392.0" />
-                              </children>
                               <padding>
                                  <Insets left="10.0" right="10.0" />
                               </padding>
@@ -120,7 +124,6 @@
                                 <GridPane.margin>
                                     <Insets right="10.0" />
                                 </GridPane.margin>
-                                <children>
                                     <GridPane prefHeight="512.0" prefWidth="524.0" style="-fx-background-color: linear-gradient( #272828,  #374754);">
                                         <columnConstraints>
                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="87.0" />
@@ -133,7 +136,6 @@
                                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         </rowConstraints>
                                     </GridPane>
-                                </children>
                             </HBox>
                            <HBox fx:id="hb_AddAlbum" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(#444, #000);" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                               <padding>
@@ -142,7 +144,6 @@
                               <GridPane.margin>
                                  <Insets right="10.0" />
                               </GridPane.margin>
-                              <children>
                                  <GridPane prefHeight="512.0" prefWidth="542.0" style="-fx-background-color: linear-gradient( #272828,  #374754);">
                                    <columnConstraints>
                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.333251953125" minWidth="10.0" prefWidth="301.3333740234375" />
@@ -160,11 +161,8 @@
                                        <RowConstraints maxHeight="267.6666259765625" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
                                        <RowConstraints maxHeight="267.6666259765625" minHeight="10.0" prefHeight="85.33331298828125" vgrow="SOMETIMES" />
                                    </rowConstraints>
-                                    <children>
                                        <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                          <children>
                                              <Label text="Titulo" />
-                                          </children>
                                           <opaqueInsets>
                                              <Insets />
                                           </opaqueInsets>
@@ -179,7 +177,6 @@
                                           <GridPane.margin>
                                              <Insets right="10.0" />
                                           </GridPane.margin>
-                                          <children>
                                              <TextField fx:id="tfTitulo_hb_addAlbum" prefHeight="31.0" prefWidth="553.0" promptText="Ex: In the Wee Small Hours" style="-fx-text-fill: white;-fx-background-color: black;">
                                                 <opaqueInsets>
                                                    <Insets />
@@ -191,7 +188,6 @@
                                                    <Insets left="10.0" />
                                                 </HBox.margin>
                                              </TextField>
-                                          </children>
                                        </HBox>
                                        <Label text="Autor" GridPane.rowIndex="3">
                                           <opaqueInsets>
@@ -222,15 +218,13 @@
                                           <GridPane.margin>
                                              <Insets left="10.0" right="10.0" />
                                           </GridPane.margin>
-                                          <children>
-                                             <RadioButton fx:id="rbK7_hb_addAlbum" mnemonicParsing="false" text="K7" onAction="#mudarInterface">
+                                             <RadioButton fx:id="rbK7_hb_addAlbum" mnemonicParsing="false" onAction="#mudarInterface" text="K7">
                                                 <toggleGroup>
                                                    <ToggleGroup fx:id="midia" />
                                                 </toggleGroup>
                                              </RadioButton>
-                                             <RadioButton fx:id="rbVinil_hb_addAlbum" mnemonicParsing="false" text="VINIL" selected="true" toggleGroup="$midia" onAction="#mudarInterface" />
-                                             <RadioButton fx:id="rbCD_hb_addAlbum" mnemonicParsing="false" text="CD" toggleGroup="$midia" onAction="#mudarInterface" />
-                                          </children>
+                                             <RadioButton fx:id="rbVinil_hb_addAlbum" mnemonicParsing="false" onAction="#mudarInterface" selected="true" text="VINIL" toggleGroup="$midia" />
+                                             <RadioButton fx:id="rbCD_hb_addAlbum" mnemonicParsing="false" onAction="#mudarInterface" text="CD" toggleGroup="$midia" />
                                           <opaqueInsets>
                                              <Insets />
                                           </opaqueInsets>
@@ -238,22 +232,16 @@
                                              <Insets left="10.0" />
                                           </padding>
                                        </HBox>
-                                       <HBox fx:id="hb_vinil" visible="true" alignment="CENTER" prefHeight="132.0" prefWidth="500.0" GridPane.columnSpan="3">
-                                          <children>
+                                       <HBox alignment="CENTER" prefHeight="132.0" prefWidth="500.0"  GridPane.columnSpan="3">
                                              <ImageView fx:id="icoAddAlbum" fitHeight="109.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
                                                    <Image url="@../Resources/img/vinyl-record.png" />
-                                                </image>
                                              </ImageView>
 
-                                          </children>
                                        </HBox>
 
                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                                          <children>
                                              <Button mnemonicParsing="false" onAction="#apagarTela" text="Cancelar" />
-                                             <Button mnemonicParsing="false" text="Adicionar" onAction="#onCofirmarAddAlbum"/>
-                                          </children>
+                                             <Button mnemonicParsing="false" onAction="#onCofirmarAddAlbum" text="Adicionar" />
                                           <opaqueInsets>
                                              <Insets />
                                           </opaqueInsets>
@@ -267,18 +255,14 @@
                                           </GridPane.margin>
                                        </ComboBox>
                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
-                                          <children>
                                               <Button mnemonicParsing="false" onAction="#addAutor">
                                                 <graphic>
                                                    <ImageView fitHeight="62.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                                      <image>
                                                          <Image url="@../Resources/img/icons8-adicionar-grupo-de-usuários-homem-homem-100.png" />
-                                                      </image>
                                                    </ImageView>
                                                 </graphic>
                                              </Button>
                                              <Label text="Adicionar novo Autor" />
-                                          </children>
                                           <opaqueInsets>
                                              <Insets />
                                           </opaqueInsets>
@@ -286,9 +270,7 @@
                                              <Insets left="10.0" />
                                           </padding>
                                        </HBox>
-                                    </children>
                                  </GridPane>
-                              </children>
                            </HBox>
                             <HBox fx:id="hb_editarAlbum" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(#444, #000);" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <padding>
@@ -297,7 +279,6 @@
                                 <GridPane.margin>
                                     <Insets right="10.0" />
                                 </GridPane.margin>
-                                <children>
                                     <GridPane prefHeight="512.0" prefWidth="542.0" style="-fx-background-color: linear-gradient( #272828,  #374754);">
                                         <columnConstraints>
                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.333251953125" minWidth="10.0" prefWidth="301.3333740234375" />
@@ -315,11 +296,8 @@
                                             <RowConstraints maxHeight="267.6666259765625" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
                                             <RowConstraints maxHeight="267.6666259765625" minHeight="10.0" prefHeight="85.33331298828125" vgrow="SOMETIMES" />
                                         </rowConstraints>
-                                        <children>
                                             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                                <children>
                                                     <Label text="Titulo" />
-                                                </children>
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -334,7 +312,6 @@
                                                 <GridPane.margin>
                                                     <Insets right="10.0" />
                                                 </GridPane.margin>
-                                                <children>
                                                     <TextField fx:id="tfTitulo_hb_editarAlbum" prefHeight="31.0" prefWidth="553.0" promptText="Ex: In the Wee Small Hours" style="-fx-text-fill: white;-fx-background-color: black;">
                                                         <opaqueInsets>
                                                             <Insets />
@@ -346,7 +323,6 @@
                                                             <Insets left="10.0" />
                                                         </HBox.margin>
                                                     </TextField>
-                                                </children>
                                             </HBox>
                                             <Label text="Autor" GridPane.rowIndex="3">
                                                 <opaqueInsets>
@@ -377,15 +353,13 @@
                                                 <GridPane.margin>
                                                     <Insets left="10.0" right="10.0" />
                                                 </GridPane.margin>
-                                                <children>
-                                                    <RadioButton fx:id="rbK7_hb_editarAlbum" mnemonicParsing="false" selected="true" text="K7" onAction="#mudarInterface">
+                                                    <RadioButton fx:id="rbK7_hb_editarAlbum" mnemonicParsing="false" onAction="#mudarInterface" selected="true" text="K7">
                                                         <toggleGroup>
                                                             <ToggleGroup fx:id="tipomidia" />
                                                         </toggleGroup>
                                                     </RadioButton>
-                                                    <RadioButton fx:id="rbVinil_hb_editarAlbum" mnemonicParsing="false" text="VINIL" toggleGroup="$tipomidia" onAction="#mudarInterface"/>
-                                                    <RadioButton fx:id="rbCD_hb_editarAlbum" mnemonicParsing="false" text="CD" toggleGroup="$tipomidia" onAction="#mudarInterface"/>
-                                                </children>
+                                                    <RadioButton fx:id="rbVinil_hb_editarAlbum" mnemonicParsing="false" onAction="#mudarInterface" text="VINIL" toggleGroup="$tipomidia" />
+                                                    <RadioButton fx:id="rbCD_hb_editarAlbum" mnemonicParsing="false" onAction="#mudarInterface" text="CD" toggleGroup="$tipomidia" />
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -394,19 +368,13 @@
                                                 </padding>
                                             </HBox>
                                             <HBox alignment="CENTER" prefHeight="132.0" prefWidth="500.0" GridPane.columnSpan="3">
-                                                <children>
                                                     <ImageView fx:id="icoEditarAlbum" fitHeight="109.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
-                                                        <image>
                                                             <Image url="@../Resources/img/icons8-unidade-de-fita-filled-100.png" />
-                                                        </image>
                                                     </ImageView>
-                                                </children>
                                             </HBox>
                                             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                                                <children>
                                                     <Button mnemonicParsing="false" onAction="#apagarTela" text="Cancelar" />
-                                                    <Button mnemonicParsing="false" text="Confirmar" onAction="#onCofirmarEditarAlbum"/>
-                                                </children>
+                                                    <Button mnemonicParsing="false" onAction="#onCofirmarEditarAlbum" text="Confirmar" />
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -420,25 +388,19 @@
                                                 </GridPane.margin>
                                             </ComboBox>
                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
-                                          <children>
                                                   <Button mnemonicParsing="false" onAction="#addAutor">
                                                 <graphic>
                                                    <ImageView fitHeight="62.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                                      <image>
                                                          <Image url="@../Resources/img/icons8-adicionar-grupo-de-usuários-homem-homem-100.png" />
-                                                      </image>
                                                    </ImageView>
                                                 </graphic>
                                                   </Button>
                                              <Label text="Adicionar novo Autor" />
-                                          </children>
                                           <padding>
                                              <Insets left="10.0" />
                                           </padding>
                                        </HBox>
-                                        </children>
                                     </GridPane>
-                                </children>
                             </HBox>
                             <HBox fx:id="hb_editarMusica" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(#444, #000);" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <padding>
@@ -447,7 +409,6 @@
                                 <GridPane.margin>
                                     <Insets right="10.0" />
                                 </GridPane.margin>
-                                <children>
                                     <GridPane prefHeight="512.0" prefWidth="542.0" style="-fx-background-color: linear-gradient( #272828,  #374754);">
                                         <columnConstraints>
                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.333251953125" minWidth="10.0" prefWidth="301.3333740234375" />
@@ -465,11 +426,9 @@
                                             <RowConstraints maxHeight="394.0" minHeight="0.0" prefHeight="80.0" vgrow="SOMETIMES" />
                                             <RowConstraints maxHeight="267.6666259765625" minHeight="10.0" prefHeight="26.33331298828125" vgrow="SOMETIMES" />
                                         </rowConstraints>
-                                        <children>
+
                                             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                                <children>
                                                     <Label text="Titulo" />
-                                                </children>
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -484,8 +443,7 @@
                                                 <GridPane.margin>
                                                     <Insets right="10.0" />
                                                 </GridPane.margin>
-                                                <children>
-                                                    <TextField fx:id="tfTitulo_hb_editarMusica" prefHeight="31.0" prefWidth="553.0" promptText="Ex: Go In, Go Hard" style="-fx-text-fill: white; -fx-background-color: black;" >
+                                                    <TextField fx:id="tfTitulo_hb_editarMusica" prefHeight="31.0" prefWidth="553.0" promptText="Ex: Go In, Go Hard" style="-fx-text-fill: white; -fx-background-color: black;">
                                                         <opaqueInsets>
                                                             <Insets />
                                                         </opaqueInsets>
@@ -496,7 +454,6 @@
                                                             <Insets left="10.0" />
                                                         </HBox.margin>
                                                     </TextField>
-                                                </children>
                                             </HBox>
                                             <Label text="Compositor(es)" GridPane.rowIndex="3">
                                                 <opaqueInsets>
@@ -527,19 +484,13 @@
                                                 </GridPane.margin>
                                             </TextField>
                                             <HBox alignment="CENTER" prefHeight="122.0" prefWidth="500.0" GridPane.columnSpan="3">
-                                                <children>
                                                     <ImageView fitHeight="109.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
-                                                        <image>
                                                             <Image url="@../Resources/img/icons8-notas-musicais-100 (1).png" />
-                                                        </image>
                                                     </ImageView>
-                                                </children>
                                             </HBox>
                                             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                                                <children>
                                                     <Button mnemonicParsing="false" onAction="#apagarTela" text="Cancelar" />
                                                     <Button mnemonicParsing="false" onAction="#editarMusicaConfirmar" text="Confirmar" />
-                                                </children>
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -550,9 +501,7 @@
                                              <Insets right="10.0" />
                                           </padding>
                                             </HBox>
-                                        </children>
                                     </GridPane>
-                                </children>
                             </HBox>
                             <HBox fx:id="hb_adicionarMusica" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: linear-gradient(#444, #000);" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <padding>
@@ -561,7 +510,6 @@
                                 <GridPane.margin>
                                     <Insets right="10.0" />
                                 </GridPane.margin>
-                                <children>
                                     <GridPane prefHeight="512.0" prefWidth="542.0" style="-fx-background-color: linear-gradient( #272828,  #374754);">
                                         <columnConstraints>
                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.333251953125" minWidth="10.0" prefWidth="301.3333740234375" />
@@ -579,11 +527,8 @@
                                             <RowConstraints maxHeight="394.0" minHeight="0.0" prefHeight="80.0" vgrow="SOMETIMES" />
                                             <RowConstraints maxHeight="267.6666259765625" minHeight="10.0" prefHeight="26.33331298828125" vgrow="SOMETIMES" />
                                         </rowConstraints>
-                                        <children>
                                             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                                <children>
                                                     <Label text="Titulo" />
-                                                </children>
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -598,7 +543,6 @@
                                                 <GridPane.margin>
                                                     <Insets right="10.0" />
                                                 </GridPane.margin>
-                                                <children>
                                                     <TextField fx:id="tfTitulo_hb_addMusica" prefHeight="31.0" prefWidth="553.0" promptText="Ex: Go In, Go Hard" style="-fx-text-fill: white;-fx-background-color: black;">
                                                         <opaqueInsets>
                                                             <Insets />
@@ -610,7 +554,6 @@
                                                             <Insets left="10.0" />
                                                         </HBox.margin>
                                                     </TextField>
-                                                </children>
                                             </HBox>
                                             <Label text="Compositor(es)" GridPane.rowIndex="3">
                                                 <opaqueInsets>
@@ -641,19 +584,13 @@
                                                 </GridPane.margin>
                                             </TextField>
                                             <HBox alignment="CENTER" prefHeight="122.0" prefWidth="500.0" GridPane.columnSpan="3">
-                                                <children>
                                                     <ImageView fitHeight="109.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
-                                                        <image>
                                                             <Image url="@../Resources/img/icons8-notas-musicais-100 (1).png" />
-                                                        </image>
                                                     </ImageView>
-                                                </children>
                                             </HBox>
                                             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                                                <children>
                                                     <Button mnemonicParsing="false" onAction="#apagarTela" text="Cancelar" />
                                                     <Button mnemonicParsing="false" onAction="#confirmarAddMusica" text="Confirmar" />
-                                                </children>
                                                 <opaqueInsets>
                                                     <Insets />
                                                 </opaqueInsets>
@@ -664,133 +601,92 @@
                                                     <Insets right="10.0" />
                                                 </padding>
                                             </HBox>
-                                        </children>
                                     </GridPane>
-                                </children>
                             </HBox>
                             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
-                              <children>
                                  <Button id="bt_editarAlbum" mnemonicParsing="false" onAction="#editarAlbum">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-editar-100.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="bt_removerAlbum" mnemonicParsing="false" onAction="#removerAlbum">
+                                 <Button  mnemonicParsing="false" onAction="#removerAlbum">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-lixo-64.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="bt_addAlbum" mnemonicParsing="false" onAction="#addAlbum">
+                                 <Button mnemonicParsing="false" onAction="#addAlbum">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-mais-64.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                              </children>
                               <padding>
                                  <Insets left="10.0" right="10.0" top="10.0" />
                               </padding>
                            </HBox>
                            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                              <children>
                                  <Button id="bt_editarMusica" mnemonicParsing="false" onAction="#editarMusica">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-editar-100.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="bt_removerMusica" mnemonicParsing="false" onAction="#removerMusica">
+                                 <Button mnemonicParsing="false" onAction="#removerMusica">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-lixo-64.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                                 <Button fx:id="bt_addMusica" mnemonicParsing="false" onAction="#addMusica">
+                                 <Button mnemonicParsing="false" onAction="#addMusica">
                                     <graphic>
                                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
                                              <Image url="@../Resources/img/icons8-mais-64.png" />
-                                          </image>
                                        </ImageView>
                                     </graphic>
                                  </Button>
-                              </children>
                               <padding>
                                  <Insets left="10.0" right="10.0" top="10.0" />
                               </padding>
                            </HBox>
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                              <children>
                                  <ImageView fitHeight="80.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
                                        <Image url="@../Resources/img/icons8-biblioteca-de-música-filled-100.png" />
-                                    </image>
                                  </ImageView>
                                  <Label text="Albums" />
-                              </children>
                            </HBox>
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
-                              <children>
                                  <ImageView fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
                                        <Image url="@../Resources/img/icons8-gravar-música-64.png" />
-                                    </image>
                                  </ImageView>
                                  <Label text="Musicas" />
-                              </children>
                            </HBox>
                            <HBox fx:id="hb_editarIco" alignment="CENTER" prefHeight="67.0" prefWidth="532.0" visible="false" GridPane.columnIndex="2">
-                              <children>
                                  <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
                                        <Image url="@../Resources/img/icons8-editar-arquivo-100 (1).png" />
-                                    </image>
                                  </ImageView>
-                              </children>
                            </HBox>
                             <HBox fx:id="hb_addIco" alignment="CENTER" prefHeight="67.0" prefWidth="532.0" visible="false" GridPane.columnIndex="2">
-                                <children>
                                     <ImageView fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                                        <image>
                                             <Image url="@../Resources/img/icons8-adicionar-regra-100.png" />
-                                        </image>
                                     </ImageView>
-                                </children>
                             </HBox>
-                        </children>
                      </GridPane>
-                  </children>
                </HBox>
-            </children>
                         </HBox>
 
                         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1172.0" spacing="10.0" GridPane.columnSpan="2">
             <HBox alignment="CENTER" prefHeight="102.0" prefWidth="266.0">
-               <children>
                   <ImageView fitHeight="74.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../Resources/img/icons8-lady-window-music-100.png" />
-                     </image>
                   </ImageView>
                                       <Label style="-fx-font-size: 40; -fx-text-fill: white;" text="Gerenciar" />
-               </children>
             </HBox>
                             <opaqueInsets>
                                 <Insets />

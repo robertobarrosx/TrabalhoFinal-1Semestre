@@ -10,7 +10,7 @@ Disciplina de Orientação a Objetos I
 - [x] Buscar álbum por nome ou por autor/banda ✔
 - [x] Buscar música por nome ou compositores ✔
 - [x] Deve ser possível salvar e recuperar os dados de arquivo binário ✔
-- [ ] Deve ser possível importar um conjunto inicial de dados a partir de um arquivo txt.
+- [x] Deve ser possível importar um conjunto inicial de dados a partir de um arquivo txt.✔
 - [x] Deve utilizar Java e JavaFX  ✔
 - [x] Você deve criar um estilo visual único, utilizando css. ✔
 - [x] Individual ✔
