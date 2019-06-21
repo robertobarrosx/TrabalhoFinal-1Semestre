@@ -24,20 +24,15 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-               <children>
-                  <TextField fx:id="tf_nome" prefHeight="31.0" prefWidth="468.0" />
-               </children>
+                  <TextField fx:id="tf_nome" promptText="Frank Sinatra" prefHeight="31.0" prefWidth="468.0" />
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
-               <children>
-                  <TextField fx:id="tf_cidade" prefHeight="31.0" prefWidth="338.0" />
-                  <TextField fx:id="tf_ano" prefHeight="31.0" prefWidth="121.0" />
-               </children>
+                  <TextField fx:id="tf_cidade" promptText="Hoboken" prefHeight="31.0" prefWidth="338.0" />
+                  <TextField fx:id="tf_ano" promptText="1915" prefHeight="31.0" prefWidth="121.0" />
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -53,7 +48,6 @@
                </GridPane.margin>
             </Label>
             <Label text="Ano Nascimento" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         </children>
       </GridPane>
    </header>
    <content>
@@ -69,9 +63,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: red;" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="3">
-               <children>
+            <HBox prefHeight="100.0" alignment="CENTER" prefWidth="200.0" style="-fx-border-color: red;" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="3">
                   <Label prefHeight="96.0" prefWidth="406.0" text="Atenção se esse Autor não for utilizado , associando ele a algum album, ele será automatimaente deletado na proxima vez que você abrir o programa." textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="11.0" />
@@ -80,7 +72,6 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-               </children>
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -90,15 +81,12 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-               <children>
                   <Label text="Cantor" />
                   <JFXToggleButton fx:id="tb_autor" text="Banda" />
-               </children>
                <GridPane.margin>
                   <Insets left="25.0" />
                </GridPane.margin>
             </HBox>
-         </children>
       </GridPane>
    </content>
 </DialogPane>
