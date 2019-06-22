@@ -12,7 +12,7 @@ public class Autor implements Serializable {
         this.cidadeOrigem = cidadeOrigem;
         this.anoNascimento = anoNascimento;
     }
-
+    public void setNome(String nome){ this.nome = nome;}
     public String getNome() {
         return nome;
     }

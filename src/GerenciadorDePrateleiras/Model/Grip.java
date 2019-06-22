@@ -1,10 +1,24 @@
 package GerenciadorDePrateleiras.Model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Grip implements Serializable {
     private ObservableList<Prateleira> prateleiras;
@@ -199,21 +213,123 @@ public class Grip implements Serializable {
                             if (item.getAlbum().getMusicas().toString().compareTo(i.getAlbum().getMusicas().toString()) == 0) {
                                 return true;
                             }
+                            System.out.println(item.getAlbum().getMusicas().toString()+" - "+(i.getAlbum().getMusicas().toString()));
                         }
+                        System.out.println(item.getAlbum().getAutor().toString()+" - "+(i.getAlbum().getAutor().toString()));
                     }
+                    System.out.println(item.getAlbum().toString()+" - "+(i.getAlbum().toString()));
                 }
+                System.out.println(item.getTipo()+ " - "+(i.getTipo()));
             }
         }
         return false;
     }
-    public boolean carregaDadosTXT() throws IOException,ClassNotFoundException{
 
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(ARQUIVO)));
-        ArrayList<Prateleira> listaLocal = (ArrayList<Prateleira>)ois.readObject();
-        prateleiras.clear();
-        prateleiras.addAll(listaLocal);
-        ois.close();
-        return true;
+    public void importarDados(){
+        final Stage stage = new Stage();
+        stage.setTitle("Escolha o arquivo de items");
+
+        final FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its")
+        );
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            String str="";
+            try {
+                Scanner scan = new Scanner(file);
+
+
+                while(scan.hasNextLine()){
+                    str += scan.nextLine();
+                }
+                scan.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<Item>>(){}.getType();
+            ArrayList<Item> userObject = gson.fromJson(str, listType);
+
+            ArrayList<Item> correcao = new ArrayList<>();
+            ////////////////CORREÇÃO JSON HERANÇA
+            for(Item item:userObject){
+                if(item.getAlbum().getAutor().getNome().contains("*musico*"))
+                    item.getAlbum().setAutor(new Musico(item.getAlbum().getNome().replace("*Musico*",""),item.getAlbum().getAutor().getCidadeOrigem(),item.getAlbum().getAutor().getAnoNascimento()));
+                else
+                    item.getAlbum().setAutor(new Banda(item.getAlbum().getNome().replace("*Banda*",""),item.getAlbum().getAutor().getCidadeOrigem(),item.getAlbum().getAutor().getAnoNascimento()));
+            }
+            ArrayList<String> strList = new  ArrayList<>();
+            ArrayList<String> strReject = new ArrayList<>();
+            for(Item i:userObject)
+
+                if(!Grip.getInstance().existItem(i)){
+                    strList.add(i.toString());
+                    Grip.getInstance().adicionarItem(i);
+                }else{
+                    strReject.add(i.toString());
+                }
+            messagemAviso("Importação de items","Items importados: "+strList.size(),"Items já existentes: "+strReject.size());
+
+        }
+    }
+
+    public void exportarDados(){
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Salvar Items");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("ITEMS", "*.its"));
+        //System.out.println(pic.getId());
+        File file = fileChooser.showSaveDialog(stage);
+        if (file != null) {
+            try {
+                ObservableList<Item> list = Grip.getInstance().getItems();
+                for(Item item:list){
+                    if(item.getAlbum().getAutor().tipo().toLowerCase().compareTo("musico") == 0 || item.getAlbum().getAutor().tipo().toLowerCase().compareTo("banda") == 0){
+                        list.get(list.indexOf(item)).getAlbum().getAutor().setNome("*"+item.getAlbum().getAutor().tipo()+"*"+item.getAlbum().getAutor().getNome());
+                    }
+                }
+                Gson gson = new Gson();
+                String userJson = gson.toJson(list);
+                for(Item item:list){
+                    list.get(list.indexOf(item)).getAlbum().getAutor().setNome(item.getAlbum().getAutor().getNome().replace("*Musico*","").replace("*Banda*",""));
+                }
+                Formatter fo = new Formatter(file);
+                fo.format("%s", userJson);
+                fo.flush();fo.close();
+                messagemAviso("Exportação de items", "Items exportados com sucesso","Items exportados: "+Grip.getInstance().getItems().size());
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    private void messagemAviso(String titulo, String erro,String msg){
+        final Image iconeImportar = new Image(getClass().getResource("../Resources/img/import.png").toExternalForm(),true);
+        final Image iconeExportar = new Image(getClass().getResource("../Resources/img/export.png").toExternalForm(),true);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(erro);
+        alert.setContentText(msg);
+        ImageView image = new ImageView();
+        image.setFitHeight(50);
+        image.setFitWidth(50);
+        if(titulo.compareTo("Importação de items") == 0){
+            image.setImage(iconeImportar);
+            alert.setGraphic(image);
+        }
+        else if(titulo.compareTo("Exportação de items") == 0) {
+            image.setImage(iconeExportar);
+            alert.setGraphic(image);
+        }
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+                getClass().getResource("../Resources/css/dark.css").toExternalForm());
+        dialogPane.getStyleClass().add("root");
+        Optional<ButtonType> resultado = alert.showAndWait();
     }
     public void salvaDados() throws IOException{
 

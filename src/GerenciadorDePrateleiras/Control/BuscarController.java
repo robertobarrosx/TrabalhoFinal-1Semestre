@@ -169,68 +169,12 @@ public class BuscarController {
 
     @FXML
     private void importarDados(){
-        final Stage stage = new Stage();
-        stage.setTitle("Escolha o arquivo de items");
-
-        final FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("TXT", "*.txt"),
-                new FileChooser.ExtensionFilter("ITEMS", "*.its")
-        );
-        File file = fileChooser.showOpenDialog(stage);
-        if (file != null) {
-            String str="";
-            try {
-                Scanner scan = new Scanner(file);
-
-
-                while(scan.hasNextLine()){
-                    str += scan.nextLine();
-                }
-                scan.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Item>>(){}.getType();
-            ArrayList<Item> userObject = gson.fromJson(str, listType);
-            ArrayList<String> strList = new  ArrayList<>();
-            ArrayList<String> strReject = new ArrayList<>();
-            for(Item i:userObject)
-
-                if(!Grip.getInstance().existItem(i)){
-                    strList.add(i.toString());
-                    Grip.getInstance().adicionarItem(i);
-                }else{
-                    strReject.add(i.toString());
-                }
-            messagemAviso("Importação de items","Items importados: "+strList.size(),"Items já existentes: "+strReject.size());
-
-        }
+        Grip.getInstance().importarDados();
     }
 
     @FXML
     private void exportarDados(){
-        Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Salvar Items");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("TXT", "*.txt"),
-                new FileChooser.ExtensionFilter("ITEMS", "*.its"));
-        //System.out.println(pic.getId());
-        File file = fileChooser.showSaveDialog(stage);
-        if (file != null) {
-            try {
-                Gson gson = new Gson();
-                String userJson = gson.toJson(Grip.getInstance().getItems());
-                Formatter fo = new Formatter(file);
-                fo.format("%s", userJson);
-                fo.flush();fo.close();
-                messagemAviso("Exportação de items", "Items exportados com sucesso","Items exportados: "+Grip.getInstance().getItems().size());
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            }
-        }
+        Grip.getInstance().exportarDados();
     }
     @FXML
     private void listarAlbums(){

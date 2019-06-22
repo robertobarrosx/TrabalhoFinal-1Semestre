@@ -48,6 +48,7 @@ public class Album implements Serializable {
 
     public void adicionarMusica(Musica musica){
         this.musicas.add(musica);
+        this.numeroMusicas = musicas.size();
     }
     public void editarMusica(Musica antiga,Musica nova){
         ArrayList<Musica> listaLocal = new ArrayList<>();
@@ -59,6 +60,11 @@ public class Album implements Serializable {
             }
         }
         this.musicas = listaLocal;
+    }
+
+    public void removerMusica(Musica musica) {
+        this.musicas.remove(musica);
+        this.numeroMusicas = musicas.size();
     }
 
     public void setAutor(Autor autor) {
