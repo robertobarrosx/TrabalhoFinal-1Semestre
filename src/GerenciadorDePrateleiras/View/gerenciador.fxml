@@ -58,7 +58,7 @@
                      <Image url="@../Resources/img/icons8-lady-window-music-100.png" />
                </ImageView>
             </graphic></Button>
-                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaAjuda" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Ajuda">
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#janelaAjuda" prefHeight="67.0" prefWidth="389.0" style="-fx-font-size: 25; -fx-text-fill: white;" text="Sobre">
             <graphic>
                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <Image url="@../Resources/img/icons8-ajuda-100.png" />

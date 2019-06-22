@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c827e6a-0430-41a1-8f97-ef64cc9e6f7d" name="Default Changelist" comment="Finalização Talvez?">
+    <list default="true" id="6c827e6a-0430-41a1-8f97-ef64cc9e6f7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/sobre.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Autor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Autor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,40 +19,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="297" column="162" selection-start-line="297" selection-start-column="162" selection-end-line="297" selection-end-column="162" />
+            <state relative-caret-position="3285">
+              <caret line="296" column="36" lean-forward="true" selection-start-line="296" selection-start-column="36" selection-end-line="296" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="135">
-                <caret line="12" column="90" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="64" column="29" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1876#1877#0" expanded="true" />
-                <element signature="e#1948#1949#0" expanded="true" />
-                <element signature="e#2026#2027#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +52,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/addAutor.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="82" column="79" selection-start-line="82" selection-start-column="79" selection-end-line="82" selection-end-column="79" />
+            <state relative-caret-position="116">
+              <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/sobre.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102" />
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="61" column="193" selection-start-line="61" selection-start-column="193" selection-end-line="61" selection-end-column="193" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -119,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="130" column="43" selection-start-line="130" selection-start-column="43" selection-end-line="130" selection-end-column="43" />
+            <state relative-caret-position="340">
+              <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7373#7374#0" expanded="true" />
@@ -131,6 +121,16 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="257" column="94" selection-start-line="257" selection-start-column="89" selection-end-line="257" selection-end-column="94" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -145,10 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hb_editarAlbum</find>
-      <find>editar</find>
-      <find>vinil</find>
-      <find>A</find>
       <find>icoAddAlbum</find>
       <find>tfCompositor_hb_editarMusica</find>
       <find>confirmar</find>
@@ -175,6 +171,10 @@
       <find>removerMu</find>
       <find>add</find>
       <find>Musica</find>
+      <find>AJUDA</find>
+      <find>Ajuda</find>
+      <find>addAu</find>
+      <find>janelaAjuda</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -234,13 +234,13 @@
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/ControllerAutor.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/addAutor.fxml" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" />
-        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Autor.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" />
-        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java" />
+        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" />
+        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" />
+        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" />
       </list>
     </option>
   </component>
@@ -315,14 +315,6 @@
               <item name="TrabalhoFinal-1Semestre" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrabalhoFinal-1Semestre" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrabalhoFinal-1Semestre" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -336,7 +328,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -347,6 +339,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Roberto Barros\Documents\Copias\y\TrabalhoFinal-1Semestre\src\GerenciadorDePrateleiras\View" />
       <recent name="C:\Users\Roberto Barros\Documents\Copias\TrabalhoFinal-1Semestres\src\GerenciadorDePrateleiras\View" />
       <recent name="C:\Users\Roberto Barros\Documents\Copias\TrabalhoFinal-1Semestres\src\GerenciadorDePrateleiras" />
       <recent name="C:\Users\Roberto Barros\Documents\Copias\TrabalhoFinal-1Semestres\src\GerenciadorDePrateleiras\Resources\css" />
@@ -454,7 +447,7 @@
       <workItem from="1560664678002" duration="85577000" />
       <workItem from="1560988082757" duration="12912000" />
       <workItem from="1561008816166" duration="12694000" />
-      <workItem from="1561080848686" duration="46141000" />
+      <workItem from="1561080848686" duration="51004000" />
     </task>
     <task id="LOCAL-00001" summary="Controller">
       <created>1560040684102</created>
@@ -575,11 +568,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561164238125</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Correção de Bugs">
+      <created>1561175064768</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1561175064769</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250103000" />
+    <option name="totallyTimeSpent" value="254966000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -678,7 +678,8 @@
     <MESSAGE value="Arrumando Alguns Bugs" />
     <MESSAGE value="Correção de Alguns Bugs" />
     <MESSAGE value="Finalização Talvez?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalização Talvez?" />
+    <MESSAGE value="Correção de Bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correção de Bugs" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1008,22 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="384" column="63" selection-start-line="384" selection-start-column="61" selection-end-line="384" selection-end-column="63" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="44" column="71" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1033,14 +1018,6 @@
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/addAutor.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="82" column="79" selection-start-line="82" selection-start-column="79" selection-end-line="82" selection-end-column="79" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1079,6 +1056,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3285">
+          <caret line="296" column="36" lean-forward="true" selection-start-line="296" selection-start-column="36" selection-end-line="296" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/GerenciadorJanelas.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -1107,24 +1094,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="61" column="193" selection-start-line="61" selection-start-column="193" selection-end-line="61" selection-end-column="193" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/addAutor.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="257" column="94" selection-start-line="257" selection-start-column="89" selection-end-line="257" selection-end-column="94" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/sobre.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="130" column="43" selection-start-line="130" selection-start-column="43" selection-end-line="130" selection-end-column="43" />
+        <state relative-caret-position="340">
+          <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7373#7374#0" expanded="true" />
             <element signature="e#7422#7423#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="297" column="162" selection-start-line="297" selection-start-column="162" selection-end-line="297" selection-end-column="162" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

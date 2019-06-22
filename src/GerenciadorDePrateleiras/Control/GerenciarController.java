@@ -29,7 +29,7 @@ import java.util.*;
 
 public class GerenciarController {
 
-    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds,iconeAutor,iconeImportar,iconeExportar;
+    private Image iconeVinils,iconeK7s,iconeCds,miniIconeVinils,miniIconeK7s,miniIconeCds,iconeAutor,iconeImportar,iconeExportar,iconeDesenvolvedor;
     private ObservableList<Prateleira> prateleiras;
     private ObservableList<Item> items;
     @FXML
@@ -62,6 +62,7 @@ public class GerenciarController {
         iconeAutor = new Image(getClass().getResource("../Resources/img/autorAdd.png").toExternalForm(),true);
         iconeImportar = new Image(getClass().getResource("../Resources/img/import.png").toExternalForm(),true);
         iconeExportar = new Image(getClass().getResource("../Resources/img/export.png").toExternalForm(),true);
+        iconeDesenvolvedor = new Image(getClass().getResource("../Resources/img/desenvolvedor.png").toExternalForm(),true);
     }
 
     @FXML
@@ -146,10 +147,6 @@ public class GerenciarController {
         GerenciadorJanelas.loadJanela(GerenciadorJanelas.JANELA_GERENCIAR);
     }
     @FXML
-    private void janelaAjuda(){
-        GerenciadorJanelas.loadJanela(GerenciadorJanelas.ADD_ALBUM);
-    }
-    @FXML
     private void mudarInterface(){
 
         if(rbVinil_hb_addAlbum.isSelected()){
@@ -168,6 +165,29 @@ public class GerenciarController {
             icoEditarAlbum.setImage(iconeVinils);
         }
 
+    }
+    @FXML
+    private void janelaAjuda(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sobre");
+        DialogPane dialog = alert.getDialogPane();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass()
+                    .getResource("../view/sobre.fxml"));
+            Parent content = loader.load();
+            ImageView image = new ImageView();
+            image.setImage(iconeDesenvolvedor);
+            dialog.setHeaderText("Sobre o Programa");
+            dialog.setGraphic(image);
+            dialog.setContent(content);
+            dialog.getStyleClass().add("root");
+            dialog.getStylesheets().add(
+                    getClass().getResource("../Resources/css/dark.css").toExternalForm());
+            Optional<ButtonType> resultado = alert.showAndWait();
+        } catch (IOException e) {
+            messagemERRO("Presta Ateção!","Ocorreu um erro inesperado ao add Autor","não sei o que houve");
+        }
     }
     @FXML
     private void addAutor(){
