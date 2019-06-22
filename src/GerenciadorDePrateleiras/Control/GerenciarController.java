@@ -278,7 +278,7 @@ public class GerenciarController {
         }catch (NumberFormatException e) {
             messagemERRO("Presta Ateção!","Ocorreu um erro","Digite apenas numeros");
         }catch(Exception e){
-            messagemERRO("Presta Ateção!","Ocorreu um erro inesperado","não sei o que houve");
+            messagemERRO("Presta Ateção!","Ocorreu um erro inesperado",e.toString());
         }
     }
     @FXML
@@ -368,9 +368,9 @@ public class GerenciarController {
         Musica nova = new Musica(nome,autor,duracao);
         Item item = ltv_albums.getSelectionModel().getSelectedItem();
         item.getAlbum().editarMusica(antiga,nova);
-        apagarTela();
         ltv_musicas.getItems().clear();
         ltv_musicas.getItems().setAll(item.getAlbum().getMusicas());
+        apagarTela();
         }catch (NullPointerException e){
             messagemERRO("Presta Ateção!","Ocorreu um erro","Preencha todos os campos antes de editar uma Musica");
         }
@@ -384,6 +384,17 @@ public class GerenciarController {
         hb_adicionarMusica.setVisible(false);
         hb_editarMusica.setVisible(false);
         hb_addIco.setVisible(false);
+        tfAno_hb_editarAlbum.clear();
+        tfAno_hb_addAlbum.clear();
+        tfDuracao_hb_addMusica.clear();
+        tfTitulo_hb_addMusica.clear();
+        tfCompositor_hb_editarMusica.clear();
+        tfTitulo_hb_addAlbum.clear();
+        tfTitulo_hb_editarMusica.clear();
+        tfDuracao_hb_editarMusica.clear();
+        tfAutor_hb_addMusica.clear();
+        rbVinil_hb_addAlbum.setSelected(true);
+        icoAddAlbum.setImage(iconeVinils);
     }
     @FXML
     private void addMusica(){

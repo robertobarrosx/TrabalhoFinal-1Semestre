@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c827e6a-0430-41a1-8f97-ef64cc9e6f7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/sobre.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Resources/img/desenvolvedor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Resources/img/desenvolvedor.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3285">
+            <state relative-caret-position="3948">
               <caret line="296" column="36" lean-forward="true" selection-start-line="296" selection-start-column="36" selection-end-line="296" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -94,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="176" column="43" lean-forward="true" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
+            <state relative-caret-position="1207">
+              <caret line="187" column="9" lean-forward="true" selection-start-line="187" selection-start-column="9" selection-end-line="187" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5491#5492#0" expanded="true" />
@@ -112,8 +111,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
+            <state relative-caret-position="1842">
+              <caret line="351" column="13" lean-forward="true" selection-start-line="351" selection-start-column="13" selection-end-line="351" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7373#7374#0" expanded="true" />
@@ -145,7 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>icoAddAlbum</find>
       <find>tfCompositor_hb_editarMusica</find>
       <find>confirmar</find>
       <find>visible</find>
@@ -170,11 +168,12 @@
       <find>cb</find>
       <find>removerMu</find>
       <find>add</find>
-      <find>Musica</find>
       <find>AJUDA</find>
       <find>Ajuda</find>
       <find>addAu</find>
       <find>janelaAjuda</find>
+      <find>Musica</find>
+      <find>erro ines</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,10 +235,10 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Album.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Autor.java" />
-        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/buscar.fxml" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/View/gerenciador.fxml" />
+        <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java" />
         <option value="$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java" />
       </list>
     </option>
@@ -294,28 +293,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrabalhoFinal-1Semestre" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrabalhoFinal-1Semestre" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrabalhoFinal-1Semestre" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrabalhoFinal-1Semestre" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Dependencia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrabalhoFinal-1Semestre" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrabalhoFinal-1Semestre" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GerenciadorDePrateleiras" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -447,7 +424,7 @@
       <workItem from="1560664678002" duration="85577000" />
       <workItem from="1560988082757" duration="12912000" />
       <workItem from="1561008816166" duration="12694000" />
-      <workItem from="1561080848686" duration="51004000" />
+      <workItem from="1561080848686" duration="52752000" />
     </task>
     <task id="LOCAL-00001" summary="Controller">
       <created>1560040684102</created>
@@ -575,11 +552,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561175064769</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Inclusão Sobre">
+      <created>1561183474124</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1561183474124</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254966000" />
+    <option name="totallyTimeSpent" value="256714000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -679,7 +663,8 @@
     <MESSAGE value="Correção de Alguns Bugs" />
     <MESSAGE value="Finalização Talvez?" />
     <MESSAGE value="Correção de Bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção de Bugs" />
+    <MESSAGE value="Inclusão Sobre" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inclusão Sobre" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1039,57 +1024,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Musico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/ControllerAutor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
           <caret line="55" column="38" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3285">
-          <caret line="296" column="36" lean-forward="true" selection-start-line="296" selection-start-column="36" selection-end-line="296" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/GerenciadorJanelas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#819#820#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="176" column="43" lean-forward="true" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5491#5492#0" expanded="true" />
-            <element signature="e#5573#5574#0" expanded="true" />
-            <element signature="e#6335#6336#0" expanded="true" />
-            <element signature="e#6385#6386#0" expanded="true" />
-            <element signature="e#6430#6431#0" expanded="true" />
-            <element signature="e#6480#6481#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1124,10 +1064,55 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Grip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3948">
+          <caret line="296" column="36" lean-forward="true" selection-start-line="296" selection-start-column="36" selection-end-line="296" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Model/Musico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/BuscarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="187" column="9" lean-forward="true" selection-start-line="187" selection-start-column="9" selection-end-line="187" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5491#5492#0" expanded="true" />
+            <element signature="e#5573#5574#0" expanded="true" />
+            <element signature="e#6335#6336#0" expanded="true" />
+            <element signature="e#6385#6386#0" expanded="true" />
+            <element signature="e#6430#6431#0" expanded="true" />
+            <element signature="e#6480#6481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/GerenciadorJanelas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GerenciadorDePrateleiras/Control/GerenciarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="186" column="38" lean-forward="true" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="38" />
+        <state relative-caret-position="1842">
+          <caret line="351" column="13" lean-forward="true" selection-start-line="351" selection-start-column="13" selection-end-line="351" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7373#7374#0" expanded="true" />

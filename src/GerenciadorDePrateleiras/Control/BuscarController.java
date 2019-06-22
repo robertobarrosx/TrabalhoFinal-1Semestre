@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -17,13 +19,14 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.*;
 
 public class BuscarController {
 
 
-    private Image iconeImportar,iconeExportar;
+    private Image iconeImportar,iconeExportar,iconeDesenvolvedor;
     @FXML
     private TextField tf_string;
 
@@ -67,6 +70,7 @@ public class BuscarController {
     public BuscarController(){
         iconeImportar = new Image(getClass().getResource("../Resources/img/import.png").toExternalForm(),true);
         iconeExportar = new Image(getClass().getResource("../Resources/img/export.png").toExternalForm(),true);
+        iconeDesenvolvedor = new Image(getClass().getResource("../Resources/img/desenvolvedor.png").toExternalForm(),true);
     }
     private ObservableList<MusicTb> listaDeMusicas(List<MusicTb> lista) {
 
@@ -164,7 +168,26 @@ public class BuscarController {
     }
     @FXML
     private void janelaAjuda(){
-        GerenciadorJanelas.loadJanela(GerenciadorJanelas.ADD_ALBUM);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sobre");
+        DialogPane dialog = alert.getDialogPane();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass()
+                    .getResource("../view/sobre.fxml"));
+            Parent content = loader.load();
+            ImageView image = new ImageView();
+            image.setImage(iconeDesenvolvedor);
+            dialog.setHeaderText("Sobre o Programa");
+            dialog.setGraphic(image);
+            dialog.setContent(content);
+            dialog.getStyleClass().add("root");
+            dialog.getStylesheets().add(
+                    getClass().getResource("../Resources/css/dark.css").toExternalForm());
+            Optional<ButtonType> resultado = alert.showAndWait();
+        } catch (IOException e) {
+            messagemAviso("Presta Ateção!","Ocorreu um erro inesperado ao add Autor","não sei o que houve");
+        }
     }
 
     @FXML
